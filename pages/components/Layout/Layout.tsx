@@ -2,6 +2,7 @@ import Head from 'next/head';
 // import SearchInput from '../SearchInput/SearchInput';
 import styles from  './Layout.module.scss';
 import MenuOrder from '../MenuOrder/MenuOrder';
+import MenuBar from '../MenuOrder/MenuBar';
 import React, { useEffect,useState } from 'react';
 import SearchInput from '../SearchInput/SearchInput';
 
@@ -15,7 +16,7 @@ const Layout = ({}) => {
 
         <main className={styles.main}>
            <div className={styles.Menu}>
-                main
+                <MenuBar></MenuBar>
            </div>
            <div className={styles.Search}>
             <SearchInput></SearchInput>
