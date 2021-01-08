@@ -4,7 +4,7 @@ import styles from  './MenuOrder.module.scss';
 import React, { useEffect } from 'react';
 
 const MenuOrder= ({child}) => {
-    console.log("child",child);
+    // console.log("child",child);
     
     //  const state = useSelector((state) => state.MenuOrder);
     //  console.log("state",state)
@@ -20,7 +20,7 @@ const MenuOrder= ({child}) => {
                         <button><div className={styles.orderMenu_price}>Giá</div></button>
                     </div>
                     <div className={styles.orderMenuData}>
-                        {child.map((item)=>{
+                        {/* {child.map((item)=>{
                                return(
                                 <div className={styles.orderMenuData_row}>
                                     <div className={styles.orderMenuData_row_name}>{item.name}</div>
@@ -28,7 +28,7 @@ const MenuOrder= ({child}) => {
                                     <div className={styles.orderMenuData_row_price}>{item.price}</div>
                                 </div>
                                ) 
-                            })}   
+                            })}    */}
                     </div>
                 </div>
                 
