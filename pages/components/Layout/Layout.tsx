@@ -7,16 +7,6 @@ import SearchInput from '../SearchInput/SearchInput';
 
 
 const Layout = ({}) => {
-    interface Person {
-        name: string;
-        price: number;
-      }
-      const array1: Person[] =[
-        {name:"Ga CHien",price:10},
-        {name:"Ga CHien",price:10},
-        {name:"Ga CHien",price:10}
-      ]
-      const [array,setArray] =useState(array1)
    return <div className={styles.container}>
         <Head>
             <title>Create Next App</title>
@@ -31,7 +21,7 @@ const Layout = ({}) => {
             <SearchInput></SearchInput>
            </div>
            <div className={styles.MenuOrder}>
-               <MenuOrder child={array}></MenuOrder>
+               <MenuOrder ></MenuOrder>
            </div>
            
         </main>
