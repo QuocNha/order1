@@ -1,8 +1,9 @@
 import Head from 'next/head';
 // import SearchInput from '../SearchInput/SearchInput';
 import styles from  './Layout.module.scss';
-// import MenuOrder from '../MenuOrDer/MenuOder';
+import MenuOrder from '../MenuOrder/MenuOrder';
 import React, { useEffect,useState } from 'react';
+import SearchInput from '../SearchInput/SearchInput';
 
 
 const Layout = ({}) => {
@@ -27,10 +28,10 @@ const Layout = ({}) => {
                 main
            </div>
            <div className={styles.Search}>
-            {/* <SearchInput></SearchInput>         */}
+            <SearchInput></SearchInput>
            </div>
            <div className={styles.MenuOrder}>
-               {/* <MenuOrder child={array}></MenuOrder> */}
+               <MenuOrder child={array}></MenuOrder>
            </div>
            
         </main>

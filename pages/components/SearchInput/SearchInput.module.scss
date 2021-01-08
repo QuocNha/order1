@@ -1,0 +1,21 @@
+.Search{
+    display: flex;
+    align-items: center;
+    background-color: var( --background-color-dark);
+    border-radius:8px ;
+    padding-left: 16px;
+    color: var( --text-color-secondary);
+    .input{
+        width: 75%;
+        height: 100%;
+        border: none;
+        background-color: transparent;
+        padding: 1rem;
+        outline: none;
+        color: inherit;
+        ::placeholder{
+            color: var( --text-color-secondary);
+        }  
+        
+    }
+}
