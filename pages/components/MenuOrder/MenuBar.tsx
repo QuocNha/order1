@@ -24,15 +24,15 @@ const MenuOrder= () => {
                    
                    <div className={styles.icon} onClick={handelClick}> <ArtTrackIcon /></div>
                    <div className={styles.menu}>
-                   <ul>
-                       <li ><a className="active" href="">Index</a></li>
-                       <li ><a href="">Index</a></li>
-                       <li ><a href="">Index</a></li>
-                       <li ><a href="">Index</a></li>
-                       
-                   </ul>
+                    <ul>
+                       <li ><a className="active" href="">Đồ ăn</a></li>
+                       <li ><a href="">Thực phẩm</a></li>
+                       <li ><a href="">Hoa</a></li>
+                       <li ><a href="">Siêu thị</a></li>
+                       <li ><a href="">Thuốc</a></li>    
+                       <li ><a href="">Thú cưng</a></li>    
+                    </ul>
                    </div>                      
-                   
                </nav>
             </div>
 }

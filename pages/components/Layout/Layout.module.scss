@@ -1,18 +1,21 @@
-.container {
+.main {
+  height: auto;
+  padding: 1rem;
+  .container {
     padding: 2rem;
     height: 100vh;
 
     display: grid;
     grid-template-rows: auto 1tr auto;
- 
+  }
+  .footer {
+    text-align: center;
+    font-size: 0.75rem;
+  }
 }
 
-.main {
- 
-}
 
-.footer {
-  text-align: center;
-  font-size: 0.75rem;
-}
+
+
+
 

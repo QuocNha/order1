@@ -1,0 +1,128 @@
+.container{
+    
+    width: 100%;
+    height: 100px;
+    padding: 1rem;
+    
+    .title{
+        width: 100%;
+        display: flex;
+        background: var(--background-color-dark);
+        :hover{
+            transform: translateY(-4px);
+            box-shadow: 0px 4px 16px rgba(0,0,0,0.1);
+            
+        }
+        button{
+            margin-right: 1rem;
+             outline: none;
+             border: none;
+             background: transparent;
+             :hover{
+                transform: translateY(-4px);
+                box-shadow: 0px 4px 16px rgba(0,0,0,0.1);
+                
+            }
+            
+            .title_name{
+                float: left;
+                margin-left: 1rem;
+                margin-right: 1rem;
+                display: flex;
+                svg{
+                    margin-left: 1rem;
+                }
+                
+            }
+            .title_icon{
+                float: right;
+                svg{
+                    font-size: 1.3rem;
+                    margin-left: 1rem;
+                }
+                :hover{
+                    transform: translateY(-4px);
+                    box-shadow: 0px 4px 16px rgba(0,0,0,0.1);
+                    
+                }
+            }
+        }
+       
+    }
+    .body{
+        display: grid;
+        margin-top:1rem ;
+        padding: 1rem;
+        background: var(--background-color-dark);
+        .body_title{
+            width: 100%;
+            display: inline;
+            .body_title_left{
+                float: left;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+            .body_title_right{
+                display: flex;
+                float: right;
+                font-family: Arial, Helvetica, sans-serif;
+                svg{
+                    margin-right: 1rem;
+                    font-size: 1.1rem;
+                }
+               
+            }
+           
+            
+        }
+        
+        .card{
+            margin: 0px;
+            padding: 0px;
+            // text-align: center;
+            display: grid;
+            background-color: white;
+             grid-template-columns: auto auto auto ;
+             margin-top: 1rem;
+            h1{
+                text-align: center;
+                font-family: 'Hanalei Fill', cursive;
+                color: black    ;
+                margin-right:  6rem;
+
+            }
+            .card_panel_adress{
+                width: 15rem;
+                margin-left: 0.5rem;
+                color: #959595;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                box-sizing:border-box;
+               
+            }
+            .card_panel_type{
+                font-size: 13px;
+                color: #187caa;
+                /* font-weight: 700; */
+                padding: 8px 8px 5px;
+                 margin: 0; 
+                 overflow: hidden; 
+                 text-overflow: ellipsis; 
+                 white-space: nowrap;
+                p{
+                    display: inline;
+                    i{
+                        margin-right: 0.5rem;
+                        text-align: center;
+                        svg{
+                           
+                            font-size: 1.1rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+     
+
+}
