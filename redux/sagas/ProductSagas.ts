@@ -1,0 +1,21 @@
+import { call, put, takeLatest } from "redux-saga/effects";
+
+import { actionTypes, loadDataFailure, loadDataSuccess } from "../actions/ProductActions";
+
+import getEmployee from "../../pages/components/constant.config.api/api/product";
+
+function* loadDataSaga(name:any) {
+  console.log("name",name)
+  try {
+    console.log(name)
+    const response = yield call(getEmployee,name.payload);
+    alert("Vao roi");
+    yield put(loadDataSuccess(response));
+  } catch (err) {
+    yield put(loadDataFailure(err));
+  }
+}
+
+const sagas = [takeLatest(actionTypes.LOAD_DATA1, loadDataSaga),];
+
+export default sagas;
