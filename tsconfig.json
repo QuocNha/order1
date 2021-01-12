@@ -22,7 +22,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "pages/constant.config.api/product.js"  ],
   "exclude": [
     "node_modules"
   ]
