@@ -1,5 +1,4 @@
 async function getEmployee(name:String) {
-  console.log("nameAPI",name);
     interface Person {
         name: string;
         price: number;

@@ -10,7 +10,6 @@ import React, { useEffect } from 'react';
 const FoodBody= () => {
     const dispatch = useDispatch();
     const state = useSelector((state) => state.Product);
-    console.log("state",state);
     function  handelClick() {
         // const { userId, dispatch } = this.props
         dispatch( loadData1("tao nek"))
