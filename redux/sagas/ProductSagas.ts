@@ -2,7 +2,7 @@ import { call, put, takeLatest } from "redux-saga/effects";
 
 import { actionTypes, loadDataFailure, loadDataSuccess } from "../actions/ProductActions";
 
-import getEmployee from "../../pages/components/constant.config.api/api/product";
+import getEmployee from "../../pages/constant.config.api/product";
 
 function* loadDataSaga(name:any) {
   console.log("name",name)
