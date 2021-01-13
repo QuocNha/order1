@@ -1,15 +1,16 @@
-import '../styles/globals.scss'
+// import '../styles/globals.scss'
 
 import React from 'react';
 // Modules
 import { AppProps } from 'next/app';
 import Head from 'next/head';
+import { ThemeProvider } from '@material-ui/core/styles';
 
 // MUI Core
  import CssBaseline from '@material-ui/core/CssBaseline';
 // import { ThemeProvider } from '@material-ui/core/styles';
 // Utils
-//  import theme from '../utils/theme';
+  import theme from '../utils/theme';
 import wrapper from '../redux/stores'
 const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
   React.useEffect(() => {
@@ -27,8 +28,10 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
       </Head>
       
+      <ThemeProvider theme={theme}>
         <CssBaseline />
         <Component {...pageProps} />
+      </ThemeProvider>
      
     </>
   );

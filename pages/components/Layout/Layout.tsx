@@ -24,7 +24,7 @@ const Layout = ({}) => {
                 <MenuBar></MenuBar>
            </div>
            <div className={styles.Search}>
-            <SearchInput></SearchInput>
+            {/* <SearchInput></SearchInput> */}
            </div>
            
            <div className={styles.body}>
