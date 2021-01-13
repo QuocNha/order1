@@ -1,6 +1,6 @@
 import Search from '@material-ui/icons/Search';
 import React, { Fragment, useState } from 'react';
-import { fade, makeStyles } from '@material-ui/core/styles';
+import { fade, makeStyles } from '@material-ui/core';
 import Head from 'next/head';
 import MenuBar from '../../MenuOrder/MenuBar';
 import Paper from '@material-ui/core/Paper';
@@ -60,6 +60,9 @@ const FormRegister= ({}) =>{
     const handleNext = () => {
         setActiveStep(activeStep + 1);
     };
+    const handleBack = () =>{
+        setActiveStep(activeStep - 1);
+    }
     return  <div>
             <Head>
                 <title>Phong Vũ</title>
@@ -85,7 +88,9 @@ const FormRegister= ({}) =>{
                                     {getStepContent(activeStep)}
                                         <div className={classes.button}>
                                             {activeStep!==0 ? (
-                                                <Button >
+                                                <Button
+                                                onClick={handleBack} 
+                                                >
                                                 Back
                                             </Button>
                                             ):("")}
@@ -95,7 +100,7 @@ const FormRegister= ({}) =>{
                                                 color="primary"
                                                 onClick={handleNext}
                                             >
-                                                Next
+                                               {activeStep === steps.length - 1 ? 'Place order' : 'Next'}
                                             </Button>
                                         </div>
                                     </React.Fragment>
