@@ -23,7 +23,7 @@ const Main = () => {
     <AppBar position="fixed" className={classes.appBar}>
         <MenuBar></MenuBar>
     </AppBar>;
-            {/* <Drawer
+            <Drawer
                 className={classes.drawer}
                 variant="permanent"
                 classes={{
@@ -52,7 +52,7 @@ const Main = () => {
                         ))}
                     </List>
                 </div>
-            </Drawer> */}
+            </Drawer>
     </React.Fragment>
 }
 export default Main;
