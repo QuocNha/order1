@@ -6,6 +6,7 @@ import MenuBar from '../MenuOrder/MenuBar';
 import React, { useEffect,useState } from 'react';
 import SearchInput from '../SearchInput/SearchInput';
 import FoodBody from './FoodBody/FoodBody';
+import Main from './Main/Main';
 
 
 const Layout = ({}) => {
@@ -21,7 +22,7 @@ const Layout = ({}) => {
 
         <main className={styles.main} >
            <div className={styles.Menu}>
-                <MenuBar></MenuBar>
+                <Main></Main>
            </div>
            <div className={styles.Search}>
             {/* <SearchInput></SearchInput> */}
