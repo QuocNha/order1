@@ -19,11 +19,9 @@ const Layout = ({}) => {
             <link rel="icon" href="/favicon.ico" />
             <meta name="viewport" content="initial-scale=1.0, width=device-width" />
             </Head>
-
+            <Main></Main>
         <main className={styles.main} >
-           <div className={styles.Menu}>
-                <Main></Main>
-           </div>
+          
            <div className={styles.Search}>
             {/* <SearchInput></SearchInput> */}
            </div>

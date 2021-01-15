@@ -4,6 +4,8 @@ import { fade, makeStyles } from '@material-ui/core';
 import MenuBar from '../../MenuOrder/MenuBar';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
+import CssBaseline from '@material-ui/core/CssBaseline';
+
 const drawerWidth=240;
 const useStyles = makeStyles((theme) => ({
     appBar:{
@@ -20,6 +22,7 @@ const useStyles = makeStyles((theme) => ({
 const Main = () => {
     const classes = useStyles();
     return <React.Fragment>
+        <CssBaseline/>
     <AppBar position="fixed" className={classes.appBar}>
         <MenuBar></MenuBar>
     </AppBar>;
