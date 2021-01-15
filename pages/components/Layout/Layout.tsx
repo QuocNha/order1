@@ -36,7 +36,7 @@ const Layout = ({}) => {
             <meta name="viewport" content="initial-scale=1.0, width=device-width" />
             </Head>
             <CssBaseline />
-            <Main></Main>
+            <MenuBar></MenuBar>
             <Drawer
                 className={classes.drawer}
                 variant="permanent"
