@@ -8,11 +8,20 @@ import Typography from '@material-ui/core/Typography';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
-import Button from '@material-ui/core/Button';
+import {Button,Drawer,Toolbar,List,ListItem,ListItemText,ListItemIcon,Divider,AppBar} from '@material-ui/core';
 import AddressFrom from './AddressFrom'
-import AddressFormStrep1 from './AddressFormStrep1'
+import AddressFormStrep1 from './AddressFormStrep1';
+
+import Main from '../Main/Main';
 const steps = ['Shipping address', 'Payment details', 'Review your order'];
+
 const useStyles = makeStyles((theme) => ({
+    root:{
+        display: 'flex',
+    },
+    appBar:{
+        zIndex: theme.zIndex.drawer + 1,
+    },
     layout: {
         width: 'auto',
         marginLeft: theme.spacing(2),
@@ -39,7 +48,8 @@ const useStyles = makeStyles((theme) => ({
     },
     stepper :{
         padding: theme.spacing(3, 0, 5),
-    }
+    },
+    
 }));
 const getStepContent=(step :number)=>{
         switch(step){
@@ -63,14 +73,18 @@ const FormRegister= ({}) =>{
     const handleBack = () =>{
         setActiveStep(activeStep - 1);
     }
-    return  <div>
+    return  <div className={classes.root}>
             <Head>
                 <title>Phong Vũ</title>
                 <link rel="icon" href="/favicon.ico" />
             <   meta name="viewport" content="initial-scale=1.0, width=device-width" />
             </Head>
             <React.Fragment>
-                <MenuBar></MenuBar>   
+            {/* <AppBar position="fixed" className={classes.appBar}>
+                <MenuBar></MenuBar>
+            </AppBar>     */}
+            <Main></Main>    
+               
                 <main  className={classes.layout}>
                     <Paper  className={classes.paper}>
                         <Typography component="h1" variant="h4" align="center">

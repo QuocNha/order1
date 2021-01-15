@@ -1,4 +1,5 @@
 import styles from  './MenuBar.module.scss';
+import clsx from 'clsx';
 import ArtTrackIcon from '@material-ui/icons/ArtTrack';
 import AppBar from '@material-ui/core/AppBar';
 import React, { Fragment, useState } from 'react';
@@ -10,6 +11,7 @@ import { fade, makeStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
 import MailIcon from '@material-ui/icons/Mail';
+import InboxIcon from '@material-ui/icons/MoveToInbox';
 import Badge from '@material-ui/core/Badge';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
@@ -17,6 +19,8 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import Menu from '@material-ui/core/Menu';
 import MenuIcon from '@material-ui/icons/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import Drawer from '@material-ui/core/Drawer';
+import {List,ListItem,ListItemIcon,Divider,ListItemText} from '@material-ui/core';
 import Link from 'next/link';
 const useStyles = makeStyles((theme) => ({
   search: {
@@ -78,11 +82,19 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('md')]: {
       display: 'flex',
     },
-  }
+  },
+  list: {
+    width: 250,
+  },
+  fullList: {
+    width: 'auto',
+  },
+
 }));
+
 const menuId = 'primary-search-account-menu';
 const mobileMenuId = 'primary-search-account-menu-mobile';    
-
+const DataMenu : String [] =["Giao Hàng","Giao Hàng","Giao Hàng","Giao Hàng"]
     
 const MenuOrder= () => {
   const [count, setCount] = useState(1);
@@ -92,6 +104,14 @@ const MenuOrder= () => {
   const isMenuOpen = Boolean(anchorEl);
   const openMenuBar = Boolean(isMenuBar);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+  const [menuBarElement,setMenuBarElement] = React.useState(
+    {
+    top: false,
+    left: false,
+    bottom: false,
+    right: false,
+    }
+  );
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
     const handleMobileMenuOpen = (event) => {
@@ -115,6 +135,15 @@ const MenuOrder= () => {
       }else{
         setIsMenuBar(event.currentTarget);
       }
+    }
+    const toggleDrawer = (anchor, open) =>(event)=>{
+      console.log("anchor",anchor);
+      console.log("open",open);
+      console.log("event",event.type,event.key);
+      if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+        return;
+      }
+      setMenuBarElement({ ...menuBarElement, [anchor]: open });
     }
     const renderMenuBar = (
                 <Menu   
@@ -187,7 +216,35 @@ const MenuOrder= () => {
         </MenuItem>
       </Menu>
     );
-  
+    const list = (anchor) => (
+      <div
+        className={clsx(classes.list, {
+          [classes.fullList]: anchor === 'top' || anchor === 'bottom',
+        })}
+        role="presentation"
+
+        onClick={toggleDrawer(anchor, false)}
+        onKeyDown={toggleDrawer(anchor, false)}
+      >
+        <List>
+          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+            <ListItem button key={text}>
+              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItem>
+          ))}
+        </List>
+        <Divider />
+        <List>
+          {['All mail', 'Trash', 'Spam'].map((text, index) => (
+            <ListItem button key={text}>
+              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItem>
+          ))}
+        </List>
+      </div>
+    );  
     function handelClick() {
         let number:number=count;
         setCount(number+1);
@@ -217,10 +274,19 @@ const MenuOrder= () => {
                     </Link>
                   </Typography>
                   <div className={classes.menubar}>
-                      <Button color="inherit">Giao hàng</Button>
-                      <Button color="inherit">Giao hàng</Button>
-                      <Button color="inherit">Giao hàng</Button>
-                      <Button color="inherit">Giao hàng</Button> 
+                      
+                    {DataMenu.map((item :String ,index:number)=>{
+                        return<React.Fragment key ={index}>
+                          <Button color="inherit" onClick={toggleDrawer(item==="Giao hàng"?"left":"left", true)}>{item}</Button>
+                          <Drawer 
+                          anchor={item==="Giao hàng"?"left":"left"} 
+                          open={menuBarElement[item==="Giao hàng"?"left":"left"]} 
+                          onClose={toggleDrawer(item==="Giao hàng"?"left":"left", false)}
+                          >
+                          {list(item==="Giao hàng"?"left":"left")}
+                          </Drawer>
+                        </React.Fragment>
+                      })}
                   </div>
                  
                   <div className={classes.search}>
@@ -269,7 +335,7 @@ const MenuOrder= () => {
                     >
                       <MoreIcon />
                     </IconButton>
-          </div>   
+                  </div>   
                 </Toolbar>
               </AppBar>
               {renderMenu}
