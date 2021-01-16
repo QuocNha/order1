@@ -6,7 +6,7 @@ import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
-const drawerWidth=240;
+const drawerWidth=300;
 const useStyles = makeStyles((theme) => ({
     appBar:{
         zIndex: theme.zIndex.drawer + 1,

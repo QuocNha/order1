@@ -1,76 +1,119 @@
 import Head from 'next/head';
 // import SearchInput from '../SearchInput/SearchInput';
-import styles from  './Layout.module.scss';
+// import styles from  './Layout.module.scss';
 import MenuOrder from '../MenuOrder/MenuOrder';
 import MenuBar from '../MenuOrder/MenuBar';
-import React, { useEffect,useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import SearchInput from '../SearchInput/SearchInput';
 import FoodBody from './FoodBody/FoodBody';
-import {Button,Drawer,Toolbar,List,ListItem,ListItemText,ListItemIcon,Divider,AppBar} from '@material-ui/core';
+import { Button, Drawer, Toolbar, List, ListItem, ListItemText, ListItemIcon, Divider, AppBar, Grid } from '@material-ui/core';
 import { fade, makeStyles } from '@material-ui/core';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import CssBaseline from '@material-ui/core/CssBaseline';
-const Layout = ({}) => {
-   
-    const drawerWidth=240;
+const Layout = ({ }) => {
+
+    const drawerWidth = 240;
     const useStyles = makeStyles((theme) => ({
-        appBar:{
+        root: {
+            flexGrow: 1,
+        },
+        container: {
+            padding: theme.spacing(1),
+         
+        },
+
+        Menu: {
+            
+            
+        },
+        appBar: {
             zIndex: theme.zIndex.drawer + 1,
         },
-        drawer: {
-            width: drawerWidth,
-            flexShrink: 0,
+        Body: {
+            padding:theme.spacing(2),
+            marginTop:theme.spacing(6),
+            '& .BodyLeft':{
+
+            },
+            '& .BodyCenter': {
+              '& drawer'  : {
+                    width: drawerWidth,
+                    flexShrink: 0,
+                },
+            },
+            '& .BodyRight': {
+                width: '100%',
+                backgroundColor: 'red',
+                float:'right'
+
+            },    
         },
+        
+        
+        
         drawerContainer: {
             overflow: 'auto',
-          },
+        },
     }));
-    
-        const classes = useStyles();
-   
-   return <div className={styles.container} >
-            <Head>
+
+    const classes = useStyles();
+
+    return <React.Fragment>
+        <Head>
             <title>Phong Vũ</title>
             <link rel="icon" href="/favicon.ico" />
             <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-            </Head>
-            <React.Fragment>
-        <AppBar position="fixed" className={classes.appBar}>
-        <MenuBar></MenuBar>
-        </AppBar>;
-            <Drawer
-                className={classes.drawer}
-                variant="permanent"
-                classes={{
-                    // paper: classes.drawerPaper,
-                }}
-            >
-                <Toolbar />
-                <div 
-                 className={classes.drawerContainer}
-                >
-                    <List>
-                        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                            <ListItem button key={text}>
-                                <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                                <ListItemText primary={text} />
-                            </ListItem>
-                        ))}
-                    </List>
-                    <Divider />
-                    <List>
-                        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                            <ListItem button key={text}>
-                                <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                                <ListItemText primary={text} />
-                            </ListItem>
-                        ))}
-                    </List>
-                </div>
-            </Drawer>
-            </React.Fragment>
-        {/* <main className={styles.main} >
+        </Head>
+        <div className={classes.root} >
+            <Grid className={classes.container}>
+                <Grid className={classes.Menu}>
+                    <AppBar position="fixed" className={classes.appBar}>
+                        <MenuBar></MenuBar>
+                    </AppBar>
+                </Grid>
+                <Grid
+                    className={classes.Body}>
+                     <Grid item md={3} className="BodyCenter"> 
+                        <Drawer
+                            className="drawer"
+                            variant="permanent"
+                            classes={{
+                                // paper: classes.drawerPaper,
+                            }}
+                        >
+                            <Toolbar />
+                            <div
+                                className={classes.drawerContainer}
+                            >
+                                <List>
+                                    {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+                                        <ListItem button key={text}>
+                                            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+                                            <ListItemText primary={text} />
+                                        </ListItem>
+                                    ))}
+                                </List>
+                                <Divider />
+                                <List>
+                                    {['All mail', 'Trash', 'Spam'].map((text, index) => (
+                                        <ListItem button key={text}>
+                                            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+                                            <ListItemText primary={text} />
+                                        </ListItem>
+                                    ))}
+                                </List>
+                            </div>
+                        </Drawer>
+                    </Grid>
+                    <Grid item md={10} className="BodyRight">
+                        <FoodBody></FoodBody>
+                    </Grid>
+                </Grid>
+            </Grid>
+
+
+            {/* <main className={styles.main} >
            <div className={styles.Menu}>
                 <MenuBar></MenuBar>
            </div>
@@ -86,9 +129,10 @@ const Layout = ({}) => {
            </div>
         </main> */}
 
-        {/* <footer className={styles.footer}>
+            {/* <footer className={styles.footer}>
             footer
       </footer> */}
-    </div>
+        </div>
+    </React.Fragment>
 }
 export default Layout;
