@@ -1,64 +1,57 @@
 import Head from 'next/head';
 // import SearchInput from '../SearchInput/SearchInput';
-// import styles from  './Layout.module.scss';
+ //import useStyles from  './Layout';
 import MenuOrder from '../MenuOrder/MenuOrder';
 import MenuBar from '../MenuOrder/MenuBar';
 import React, { useEffect, useState } from 'react';
 import SearchInput from '../SearchInput/SearchInput';
 import FoodBody from './FoodBody/FoodBody';
 import { Button, Drawer, Toolbar, List, ListItem, ListItemText, ListItemIcon, Divider, AppBar, Grid } from '@material-ui/core';
-import { fade, makeStyles } from '@material-ui/core';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import { fade, makeStyles } from '@material-ui/core';
+const drawerWidth = 240;
+   const useStyles = makeStyles((theme) => ({
+    root: {
+        flexGrow: 1,
+    },
+    container: {
+        padding: theme.spacing(1),
+     
+    },
+
+    Menu: {
+        
+        
+    },
+    appBar: {
+        zIndex: theme.zIndex.drawer + 1,
+    },
+    Body: {
+        padding:theme.spacing(2),
+        marginTop:theme.spacing(6),
+        '& .BodyLeft':{
+
+        },
+        '& .BodyCenter': {
+          '& drawer'  : {
+                width: drawerWidth,
+                flexShrink: 0,
+            },
+        },
+        '& .BodyRight': {
+            width: '100%',
+            float:'right',     
+        },    
+    },
+    
+    drawerContainer: {
+        overflow: 'auto',
+    },
+  }));
 const Layout = ({ }) => {
-
-    const drawerWidth = 240;
-    const useStyles = makeStyles((theme) => ({
-        root: {
-            flexGrow: 1,
-        },
-        container: {
-            padding: theme.spacing(1),
-         
-        },
-
-        Menu: {
-            
-            
-        },
-        appBar: {
-            zIndex: theme.zIndex.drawer + 1,
-        },
-        Body: {
-            padding:theme.spacing(2),
-            marginTop:theme.spacing(6),
-            '& .BodyLeft':{
-
-            },
-            '& .BodyCenter': {
-              '& drawer'  : {
-                    width: drawerWidth,
-                    flexShrink: 0,
-                },
-            },
-            '& .BodyRight': {
-                width: '100%',
-                backgroundColor: 'red',
-                float:'right'
-
-            },    
-        },
-        
-        
-        
-        drawerContainer: {
-            overflow: 'auto',
-        },
-    }));
-
-    const classes = useStyles();
-
+   const classes= useStyles(); 
     return <React.Fragment>
         <Head>
             <title>Phong Vũ</title>
