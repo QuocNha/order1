@@ -49,6 +49,7 @@ const AddressFormStrep1 = () =>{
                       <Grid item xs={12} sm={12}>
                           <InputLabel htmlFor="firstName">First Name</InputLabel>
                           <Input
+                                fullWidth
                               id="firstName"
                               name="firstName"
                               className={classes.input}

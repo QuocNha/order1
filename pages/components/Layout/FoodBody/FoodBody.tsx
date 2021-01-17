@@ -61,7 +61,7 @@ const FoodBody= () => {
     return <React.Fragment>
                 <Divider />
                 <Grid className={classes.container}>
-                    <Grid className="title" md={12}>
+                    <Grid item className="title" md={12}>
                     <Button className={classes.left} onClick={handelClick} color="primary">
                         Đồ ăn <ArrowForwardIcon/>
                     </Button>
@@ -70,8 +70,8 @@ const FoodBody= () => {
                         <ArrowForwardIosIcon />
                     </Button>
                     </Grid>
-                    <Grid container  className="menu" md={12} >
-                        <Grid md={4} className="menuItem">
+                    <Grid container   className="menu"  >
+                        <Grid item md={4} className="menuItem">
                             <Button >Ưu đãi </Button>
                             <Button ><AppsIcon/> Xem tất cả </Button>
                             <div >
@@ -81,7 +81,7 @@ const FoodBody= () => {
                             <div ><p><i><AddShoppingCartIcon/></i>Giảm 30 %</p></div>
                             </div>    
                         </Grid>
-                        <Grid md={4} className="menuItem">
+                        <Grid item md={4} className="menuItem">
                             <Button >Ưu đãi </Button>
                             {/* <Button ><AppsIcon/> Xem tất cả </Button> */}
                             <div >
@@ -91,7 +91,7 @@ const FoodBody= () => {
                             <div ><p><i><AddShoppingCartIcon/></i>Giảm 30 %</p></div>
                             </div>    
                         </Grid>
-                        <Grid md={4} className="menuItem">
+                        <Grid item md={4} className="menuItem">
                             <Button >Ưu đãi </Button>
                             {/* <Button ><AppsIcon/> Xem tất cả </Button> */}
                             <div >
@@ -101,7 +101,7 @@ const FoodBody= () => {
                             <div ><p><i><AddShoppingCartIcon/></i>Giảm 30 %</p></div>
                             </div>    
                         </Grid>
-                        <Grid md={4} className="menuItem">
+                        <Grid item md={4} className="menuItem">
                             <Button >Ưu đãi </Button>
                             {/* <Button ><AppsIcon/> Xem tất cả </Button> */}
                             <div >
@@ -111,7 +111,7 @@ const FoodBody= () => {
                             <div ><p><i><AddShoppingCartIcon/></i>Giảm 30 %</p></div>
                             </div>    
                         </Grid>
-                        <Grid md={4} className="menuItem">
+                        <Grid item md={4} className="menuItem">
                             <Button >Ưu đãi </Button>
                             {/* <Button ><AppsIcon/> Xem tất cả </Button> */}
                             <div >

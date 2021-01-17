@@ -174,7 +174,7 @@ const MenuOrder= () => {
             <a>Đăng ký</a>
           </Link>
         </MenuItem>
-        <MenuItem ><Link href="/">My account</Link></MenuItem>
+        <MenuItem ><Link href="/components/Login/Login">My account</Link></MenuItem>
       </Menu>
     );
     const renderMobileMenu = (
