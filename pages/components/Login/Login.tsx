@@ -7,6 +7,10 @@ import * as Yup from 'yup';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Head from 'next/head';
 import Image from 'next/image'
+import {useRouter} from 'next/router'
+import {useState} from 'react'
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+
 // import stytes from'./Login.module.scss'
 const Copyright= ()=> {
         return (
@@ -21,7 +25,20 @@ const Copyright= ()=> {
         );
       }
 const Login = ({ }) => {
+        const router = useRouter();
+        const [query, setQuery] = useState('');
+        const preventDefault = f => e => {
+                e.preventDefault()
+                f(e)
+              }
+        const handleSubmit =  preventDefault(()=> {
+                alert("vao roi ");
         
+                router.push({
+                        pathname: "/components/Layout/Layout",
+                      })
+              
+        })
         const useStyles = makeStyles((theme) => ({
                 root: {
                         flexGrow: 1,
@@ -43,6 +60,10 @@ const Login = ({ }) => {
                                 display:'flex',
                                 flexDirection: 'column',
                                 alignItems: 'center',
+                                '& .avatar':{
+                                margin: theme.spacing(1),
+                                backgroundColor: theme.palette.secondary.main,            
+                                },
                                 '& .form': {
                                         width: '100%', // Fix IE 11 issue.
                                         marginTop: theme.spacing(1),
@@ -73,7 +94,8 @@ const Login = ({ }) => {
                 errors:{
                         color:'red',
                         padding:theme.spacing(1)
-                }
+                },
+                
         }));
         const classes = useStyles();
         const  formik =useFormik({
@@ -102,12 +124,12 @@ const Login = ({ }) => {
                         <Grid item  md={7} className="">
                                 <div className="paper" >
                                         <Avatar className="avatar">
-                                        {/* <LockOutlinedIcon /> */}
+                                        <LockOutlinedIcon />
                                         </Avatar>
                                         <Typography component="h1" variant="h5">
                                         <Link href='/components/Layout/Layout'><a>Sign in</a></Link>
                                         </Typography>
-                                        <form  className='form'>
+                                        <form  className='form' onSubmit={handleSubmit}>
                                                 
                                                         <InputLabel htmlFor="firstName">Email</InputLabel>
                                                         <Input

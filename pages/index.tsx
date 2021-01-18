@@ -4,6 +4,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Link from 'next/link';
 import { LayersClearOutlined } from '@material-ui/icons';
 import Layout from './components/Layout/Layout';
+import Login from './components/Login/Login';
 
 // import styles from '../styles/Home.module.scss'
 
@@ -21,7 +22,7 @@ const Home = () => {
     <Fragment>
       <div id="demo" >
       {/* <Link  href="/components/Layout/Layout"><a >Vui lòng click để vào trang  web</a></Link> */}
-      <Layout></Layout>
+      <Login></Login>
       </div>
     
     </Fragment>
