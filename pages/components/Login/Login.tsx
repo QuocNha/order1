@@ -6,14 +6,14 @@ import {useFormik} from 'formik'
 import * as Yup from 'yup';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Head from 'next/head';
-
+import Image from 'next/image'
 // import stytes from'./Login.module.scss'
 const Copyright= ()=> {
         return (
           <Typography variant="body2" color="textSecondary" align="center">
             {'Copyright © '}
-            <Link  href="https://material-ui.com/">
-              Your Website
+            <Link  href="/">
+              Phong Vũ
             </Link>{' '}
             {new Date().getFullYear()}
             {'.'}
@@ -25,6 +25,15 @@ const Login = ({ }) => {
         const useStyles = makeStyles((theme) => ({
                 root: {
                         flexGrow: 1,
+                    },
+                    img:{
+                        '& img':{
+                                backgroundRepeat: 'no-repeat',
+                                backgroundColor:
+                        theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
+                                 backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                        }
                     },
                 root1:{
                         height: '100vh',
@@ -53,9 +62,17 @@ const Login = ({ }) => {
                                       },
                                       '& label':{
                                         marginLeft:theme.spacing(1)
+                                        },
+                                        '& .forgotPassword':{
+                                                marginTop:theme.spacing(2),
+                                                padding:theme.spacing(1),
                                         }
 
                         }   
+                },
+                errors:{
+                        color:'red',
+                        padding:theme.spacing(1)
                 }
         }));
         const classes = useStyles();
@@ -79,8 +96,8 @@ const Login = ({ }) => {
                 </Head>
                  <div className={classes.root} >
                  <Grid container  component="main" className={classes.root1}>
-                        <Grid item md={5} className="">
-                                        Ảnh
+                        <Grid item md={5} className={classes.img}>
+                        <Image src="/nha.jpg" alt="me" width="600" height="530" />
                         </Grid>
                         <Grid item  md={7} className="">
                                 <div className="paper" >
@@ -105,7 +122,7 @@ const Login = ({ }) => {
                                                         />
                                                         {formik.touched.email && formik.errors.email ? (
                                                         <div 
-                                                        // className={classes.errors}
+                                                         className={classes.errors}
                                                         >
                                                         {formik.errors.email}</div>
                                                         ) : null}
@@ -141,7 +158,7 @@ const Login = ({ }) => {
                                                         
                                                                 Login
                                                         </Button>
-                                                        <Grid container>
+                                                        <Grid container className="forgotPassword">
                                                                 <Grid item xs>
                                                                         <Link href="/">
                                                                                 Forgot password?
