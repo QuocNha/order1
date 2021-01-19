@@ -187,7 +187,7 @@ const Login = ({ }) => {
                                                                         </Link>
                                                                 </Grid>
                                                                 <Grid item>
-                                                                        <Link href="/">
+                                                                        <Link href="/components/Resign">
                                                                                 {"Don't have an account? Sign Up"}
                                                                         </Link>
                                                                 </Grid>
