@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start -p $PORT",
-    "server":"nodemon server"
+    "server": "nodemon server"
   },
   "dependencies": {
     "@material-ui/core": "^4.11.2",
@@ -22,6 +22,7 @@
     "immer": "^8.0.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.11.12",
+    "morgan": "^1.10.0",
     "next": "10.0.5",
     "next-redux-wrapper": "^6.0.2",
     "node-sass": "^5.0.0",
