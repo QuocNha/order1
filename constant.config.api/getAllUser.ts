@@ -3,7 +3,7 @@ import axios from 'axios';
 async function getAllUser() {
     let data;
     await axios.get(
-        "http://localhost:3000/api/resign",
+        "https://order-demo-nextjs.herokuapp.com/api/resign",
         
     )
         .then(function (response) {
