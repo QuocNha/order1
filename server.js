@@ -6,6 +6,8 @@ const mongoose =require('mongoose');
 const config= require('config');
 const db = config.get('mongoURI');
 const product = require ('./backEnd/api/use');
+const user = require ('./backEnd/api/resign');
+const customer = require('./backEnd/api/customerRouter')
 const bodyParser = require('body-parser');
 const  connectDB =  async()=>{
     try{
@@ -25,7 +27,8 @@ app.use(morgan('dev'))
 app.get('/',(rep,res)=>res.send('API Running'));
 app.use('/api/users',require('./backEnd/api/use'))
 app.use('/product',product);
-
+app.use('/user',user);
+app.use('/customer',customer)
 app.use((rep,res,next)=>{
     const error = new Error('Not Found');
      error.status=404;
@@ -51,6 +54,8 @@ app.use((error,rep,res,next)=>{
      }
    })
 })
-const  PORT = process.env.PORT || 5000;
-
-app.listen(PORT,()=>console.log('Server PORT '+ PORT));
+var port = process.env.PORT || 5000;
+  
+  app.listen(port, function () {
+    console.log('Updated : Server listening at port %d', port);
+  }); 

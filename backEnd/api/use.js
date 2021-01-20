@@ -9,21 +9,27 @@ const db = config.get('mongoURI');
 
 
 // router.get('/',(rep,res)=>res.send('Use route'));
-const  connectDB =  async()=>{
-    try{
-      
-        await mongoose.connect(db,{useUnifiedTopology: true,useNewUrlParser: true});
-      console.log("MongoDb connect");
-    }catch(error){
-        console.error(error.message);
-        // exit connect when error
-        process.exit(1);
-    }
-}
-router.get('/',(rep,res,next)=>{
-        res.status(200).json({
-            message:"Thanh công"
-        })
+
+router.post('/addUser',(rep,res,next)=>{
+       const product = new Product({
+            _id:mongoose.Types.ObjectId(),
+            name:rep.body.name,
+            price:rep.body.price
+       });
+       product
+       .save()
+       .then(
+           result =>{
+               console.log(result);
+               res.status(201).json(result);
+           }
+       )
+       .catch(err =>{
+           console.log(err);
+           res.status(500).json({
+               erro:err
+           })
+       });
 })
 router.post('/',(rep,res,next)=>{
     let array= [];

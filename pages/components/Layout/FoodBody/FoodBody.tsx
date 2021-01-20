@@ -52,11 +52,12 @@ const FoodBody= () => {
     const classes = useStyles();
     function  handelClick() {
         // const { userId, dispatch } = this.props
-        dispatch( loadData1("tao nek"))
+        // dispatch( loadData1("tao nek"))
         
     }
     useEffect(() => {
-        dispatch(loadData());
+        dispatch(loadData1("tao nek"));
+        
     }, [dispatch]);
     return <React.Fragment>
                 <Divider />
