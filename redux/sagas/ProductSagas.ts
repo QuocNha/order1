@@ -8,7 +8,7 @@ function* loadDataSaga(name:any) {
   try {
     console.log(name)
     const response = yield call(getEmployee);
-    alert("Vao roi");
+    // alert("Vao roi");
     yield put(loadDataSuccess(response));
   } catch (err) {
     yield put(loadDataFailure(err));

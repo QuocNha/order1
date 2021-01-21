@@ -22,15 +22,18 @@ const  UserSchema =  mongoose.Schema({
     //     required: [true, 'Your password is required'],
     //     max: 100
     // },
-    // address1:{
-    //     type:String
-    // },
-    // address2:{
-    //     type:String
-    // },
-    // phone:{
-    //     type:String
-    // },
+    address1:{
+        type:String
+    },
+    address2:{
+        type:String
+    },
+    phone:{
+        type:String
+    },
+    country:{
+        type:String
+    },
     // userType: {
     //     type: String,
     //     enum: ['SuperAdmin', 'Normal'],

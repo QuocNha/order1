@@ -32,7 +32,7 @@ const Login = ({ }) => {
                 f(e)
               }
         const handleSubmit =  preventDefault(()=> {
-                alert("vao roi ");
+                // alert("vao roi ");
         
                 router.push({
                         pathname: "/components/Layout/Layout",

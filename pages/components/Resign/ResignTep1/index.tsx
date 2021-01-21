@@ -15,10 +15,11 @@ const useStyles= makeStyles((theme:Theme)=>({
             color:'red'
         }
 }))
-const ResignTep1 = (action) =>{
+const ResignTep1 = (action:any) =>{
     const classes = useStyles();
+    const [lastName,setLastName] = useState("");
     const handelClick=()=>{
-        alert("1");
+        // alert("1");
     }
     const formik = useFormik({
         initialValues: {
@@ -28,7 +29,7 @@ const ResignTep1 = (action) =>{
         lastAddress:'',
         email: '',
         password:'',
-        city:'',
+        phone:'',
         zip:'',
         country:'',
         state:''
@@ -49,7 +50,7 @@ const ResignTep1 = (action) =>{
             zip: Yup.string()
               .max(20, 'Must be 20 characters or less')
               .required('Required*'),
-            city: Yup.string()
+            phone: Yup.string()
               .max(20, 'Must be 20 characters or less')
               .required('Required*'),
             firsAddress: Yup.string()
@@ -61,10 +62,18 @@ const ResignTep1 = (action) =>{
             }),
         onSubmit: values => {
           alert(JSON.stringify(values, null, 2));
-          action.hadel(1);
-
+          action.hadel(
+            1,
+            values.lastName,
+            values.firstName,
+            values.lastAddress,
+            values.firsAddress,
+            values.phone
+            );
+          
         },
       });
+      
     return  <React.Fragment>
                 <Typography  variant="h6" gutterBottom>
                     Step1 Resign
@@ -135,19 +144,19 @@ const ResignTep1 = (action) =>{
                             />
                         </Grid>
                         <Grid item xs={12} sm={6}>
-                        {formik.touched.city && formik.errors.city ? (
-                              <div className={classes.error}>{formik.errors.city}</div>
+                        {formik.touched.phone && formik.errors.phone ? (
+                              <div className={classes.error}>{formik.errors.phone}</div>
                           ) : null}
                             <TextField
                                 required
-                                id="city"
-                                name="city"
-                                label="City"
+                                id="phone"
+                                name="phone"
+                                label="phone"
                                 fullWidth
                                 autoComplete="shipping address-level2"
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
-                                value={formik.values.city}
+                                value={formik.values.phone}
                             />
                         </Grid>
                         <Grid item >
