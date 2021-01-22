@@ -208,11 +208,8 @@ const ResignTep1 = (action:any) =>{
                             />
                         </Grid>
                     </Grid>    
-                    <div className={classes.button}>
-                    <Button 
-                    >
-                        Back
-                    </Button>
+                    
+                        <div className={classes.button}>  
                     <Button
                         variant="contained"
                         color="primary"

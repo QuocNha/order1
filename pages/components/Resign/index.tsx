@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
-import Paper from '@material-ui/core/Paper'
-import classes from '*.module.css';
-import { makeStyles,Typography } from '@material-ui/core';
+import Paper from '@material-ui/core/Paper';
+import { useSelector, useDispatch } from "react-redux";
+import { loadData1 } from '../../../redux/actions/ProductActions';
+
+// import classes from '*.module.css';
+import { makeStyles,Typography,Stepper,StepLabel,Step } from '@material-ui/core';
 import ResignTep1 from './ResignTep1';
 import ResignTep2 from './ResignTep2';
 import ResignTep3 from './ResignTep3';
@@ -25,9 +28,13 @@ const  useStyles  =makeStyles((theme)=>({
             
         },
         },
+        stepper: {
+            padding: theme.spacing(3, 0, 5),
+        },
 
 }));
 const Resign = () => {
+    const steps = ['Resign address', 'Resign User', 'Review'];
     const classes = useStyles();
     const [activeStep,setActiveStep] = useState(0);
     const [firstName ,setFirstName] = useState("");
@@ -37,8 +44,8 @@ const Resign = () => {
     const [email ,setEmail] = useState("");
     const [password ,setPassword] = useState("");
     const [phone ,setPhone] = useState("");
-
-    const hadelChance= (
+    const dispatch = useDispatch();
+    const hadelChanceTep1= (
         step:number,
         name:string,
         firstNameH:string,
@@ -52,10 +59,32 @@ const Resign = () => {
         setLastAddress(lastAddressH);
         setFirsAddress(firsAddressH)
         setPhone(phoneH)
-       
+    }
+    const hadelChanceTep2= (
+        step:number,
+        email:string,
+        password:string
+        ) => {
+            setActiveStep(step)
+            setEmail(email);
+            setPassword(password)
         
     }
-    const getStepContent=(step :number)=>{
+    const hadelClick = () =>{
+        setActiveStep(activeStep-1);
+    }
+    //Login action
+    const hadelSuccess= () => {
+         dispatch(loadData1("hehe")); 
+    }
+    const getStepContent=(step :number,
+        lastName,
+        firstName,
+        lastAddress,
+        firsAddress,
+        phone,
+        email,
+        password)=>{
         
         console.log("activeStep",activeStep);
         console.log("activeStep",lastName);
@@ -65,22 +94,30 @@ const Resign = () => {
         switch(step){
              case 0: 
              return <ResignTep1 
-             hadel= {hadelChance}
-             lastName={lastName}
+             hadel= {hadelChanceTep1}
+             activeStep={step}
              >   
              </ResignTep1>
              case 1: 
              return <ResignTep2
-                hadel= {hadelChance}
-                name={lastName}
-                firstNameH={firstName}
-                lastAddressH={lastAddress}
-                firsAddressH={firsAddress}
-                phoneH={phone}
+                hadel= {hadelChanceTep2}
+                hadelClick={hadelClick}
+                activeStep={step}
                 >
              </ResignTep2>
              case 2: 
-             return <ResignTep3 hadel= {hadelChance}></ResignTep3>
+             return <ResignTep3
+             hadelClick={hadelClick}
+             hadelSuccess={hadelSuccess}
+             name={lastName}
+             activeStep={step}
+             firstNameH={firstName}
+             lastAddressH={lastAddress}
+             firsAddressH={firsAddress}
+             phoneH={phone}
+             email={email}
+             password={password}
+             ></ResignTep3>
              default: 
              throw new Error('Unknown step')   
         }
@@ -93,8 +130,23 @@ const Resign = () => {
                 <Typography variant="h4" component="h2"  align="center">
                     Form Resign
                 </Typography>
+                <Stepper activeStep={activeStep} className={classes.stepper}>
+                    {steps.map((label) => (
+                    <Step key={label}>
+                    <StepLabel>{label}</StepLabel>
+                </Step>
+                ))}
+          </Stepper>
                 <React.Fragment>
-                    {getStepContent(activeStep)}
+                    {
+                    getStepContent(activeStep,lastName,
+                    firstName,
+                    lastAddress,
+                    firsAddress,
+                    phone,
+                    email,
+                    password
+                    )}
                 </React.Fragment>
             </Paper>
         </main>

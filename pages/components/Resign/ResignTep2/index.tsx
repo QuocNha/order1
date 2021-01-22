@@ -35,7 +35,9 @@ const ResignTep2 = (action:any) => {
         onSubmit: values => {
             alert(JSON.stringify(values, null, 2));
             action.hadel(
-                2)
+                2,
+                values.email,
+                values.password)
           },
     });
     return <React.Fragment>
@@ -100,6 +102,7 @@ const ResignTep2 = (action:any) => {
                         <Grid item xs={12} sm={6}>
                         <div className={classes.button}>
                             <Button
+                            onClick={action.hadelClick}
                             >
                                 Back
                         </Button>
