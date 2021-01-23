@@ -52,13 +52,13 @@ const ResignTep3 = (action:any) => {
                         <ListItem key={action.email} className={classes.listItem}>
                         <ListItemText primary="User Name :"  />
                             <Typography variant="body2">
-                                {(action.email).charAt(0)+(action.email).charAt(1) +(action.email).charAt(2) + "*****"+"@gmail" }</Typography>
+                                {action.email }</Typography>
                         </ListItem>
                     </List>
                     <List disablePadding>
                         <ListItem key={action.password} className={classes.listItem}>
                         <ListItemText primary="Password :"  />
-                            <Typography variant="body2">{(action.password).charAt(0)+(action.password).charAt(1) +(action.password).charAt(2) + "********"} </Typography>
+                            <Typography variant="body2">{action.password} </Typography>
                         </ListItem>
                     </List>
                 </Grid>
