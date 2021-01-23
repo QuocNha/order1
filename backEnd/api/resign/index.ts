@@ -82,11 +82,7 @@ const customersAPI = async ( req,
     handlers)=>{
 		try {
 			if (req.method === 'POST') {
-				console.log("aaaaaaaaaaaa");
-				console.log("aaaaaaaaaaaa",req.body);
-				
 				const body = { ...req.body }
-				console.log("body",body)
 				return await handlers['addUser']({ req, res, /* config, */ body })
 			}
 		} catch (error) {

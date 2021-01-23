@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Paper from '@material-ui/core/Paper';
 import { useSelector, useDispatch } from "react-redux";
 import { loadResign } from '../../../redux/actions/UserAcctions';
+import NProgress from 'nprogress'
 
 // import classes from '*.module.css';
 import { makeStyles,Typography,Stepper,StepLabel,Step } from '@material-ui/core';
@@ -11,6 +12,7 @@ import ResignTep3 from './ResignTep3';
 import ResignTep4 from './ResignTep4';
 
 import Main from '../Layout/Main/Main';
+import { isNull } from 'util';
 const  useStyles  =makeStyles((theme)=>({
         root:{
             width: 'auto',
@@ -77,7 +79,7 @@ const Resign = () => {
         setActiveStep(activeStep-1);
     }
     //Login action
-    const hadelSuccess= () => {
+    const hadelSuccess= async() => {
         interface User {
             firstName: String,
             lastName: String,
@@ -103,8 +105,9 @@ const Resign = () => {
             userRole: "SuperAdmin",
           }
          dispatch(loadResign(user)); 
-        if(state.employeedata.status==="200"){
-            setActiveStep(3) ;
+        if( state !== null &&   state.employeedata.status===200){
+             setActiveStep(3) ;
+             NProgress.start();  
         }  
     }
     const getStepContent=(step :number,
@@ -115,12 +118,6 @@ const Resign = () => {
         phone,
         email,
         password)=>{
-        
-        console.log("activeStep",activeStep);
-        console.log("activeStep",lastName);
-        console.log("activeStep",lastAddress);
-        console.log("activeStep",lastAddress);
-        console.log("activeStep",phone);
         switch(step){
              case 0: 
              return <ResignTep1 

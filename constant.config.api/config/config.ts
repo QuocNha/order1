@@ -3,6 +3,8 @@ const SERVERAPI = "http://localhost:3000/";
    //    const SERVERAPI ="https://order-demo-nextjs.herokuapp.com/";
 
 const RESIGN = SERVERAPI + "api/resign";
+const LOGINUSER = SERVERAPI+ "api/login";
+
 export {
-    RESIGN
+    RESIGN,LOGINUSER
 }

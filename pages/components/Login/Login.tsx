@@ -10,7 +10,8 @@ import Image from 'next/image'
 import {useRouter} from 'next/router'
 import {useState} from 'react'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-
+import { useSelector, useDispatch } from "react-redux";
+import { loginLoad } from '../../../redux/actions/UserAcctions';
 // import stytes from'./Login.module.scss'
 const Copyright= ()=> {
         return (
@@ -31,14 +32,14 @@ const Login = ({ }) => {
                 e.preventDefault()
                 f(e)
               }
-        const handleSubmit =  preventDefault(()=> {
-                // alert("vao roi ");
+        // const handleSubmit =  preventDefault(()=> {
+        //         // alert("vao roi ");
         
-                router.push({
-                        pathname: "/components/Layout/Layout",
-                      })
+        //         router.push({
+        //                 pathname: "/components/Layout/Layout",
+        //               })
               
-        })
+        // })
         const useStyles = makeStyles((theme) => ({
                 root: {
                         flexGrow: 1,
@@ -98,6 +99,8 @@ const Login = ({ }) => {
                 
         }));
         const classes = useStyles();
+        const dispatch = useDispatch();
+        const state = useSelector((state) => state);
         const  formik =useFormik({
                 initialValues:{
                         email:'',
@@ -108,6 +111,11 @@ const Login = ({ }) => {
                 }),
         onSubmit: values => {
                 alert(JSON.stringify(values, null, 1));
+                let user ={
+                        email:values.email,
+                        password:values.password
+                }
+                dispatch(loginLoad(user))
         },
         });
         return <React.Fragment>
@@ -127,9 +135,9 @@ const Login = ({ }) => {
                                         <LockOutlinedIcon />
                                         </Avatar>
                                         <Typography component="h1" variant="h5">
-                                        <Link href='/components/Layout/Layout'><a>Sign in</a></Link>
+                                       Sign in
                                         </Typography>
-                                        <form  className='form' onSubmit={handleSubmit}>
+                                        <form  className='form' onSubmit={formik.handleSubmit}>
                                                 
                                                         <InputLabel htmlFor="firstName">Email</InputLabel>
                                                         <Input
