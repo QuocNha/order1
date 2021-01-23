@@ -1,7 +1,7 @@
 import { call, put, takeLatest } from "redux-saga/effects";
 
 import { actionTypes, loadDataFailure, loadDataSuccess } from "../actions/ProductActions";
-
+import { actionUser } from "../actions/UserAcctions";
 import getEmployee from "../../constant.config.api/getAllUser"
 function* loadDataSaga(name:any) {
   console.log("name",name)
@@ -15,6 +15,6 @@ function* loadDataSaga(name:any) {
   }
 }
 
-const sagas = [takeLatest(actionTypes.LOAD_DATA1, loadDataSaga),];
+const sagas = [takeLatest(actionTypes.LOAD_DATA1, loadDataSaga)];
 
 export default sagas;

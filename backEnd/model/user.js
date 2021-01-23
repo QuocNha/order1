@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const  UserSchema =  mongoose.Schema({
+const  UserSchema = new  mongoose.Schema({
     _id:mongoose.Schema.Types.ObjectId,
     firstName: {
 		type: String,
@@ -17,11 +17,11 @@ const  UserSchema =  mongoose.Schema({
         trim:true,
         unique: true
     },
-    // password: {
-    //     type: String,
-    //     required: [true, 'Your password is required'],
-    //     max: 100
-    // },
+    password: {
+        type: String,
+        required: [true, 'Your password is required'],
+        max: 100
+    },
     address1:{
         type:String
     },
@@ -34,17 +34,17 @@ const  UserSchema =  mongoose.Schema({
     country:{
         type:String
     },
-    // userType: {
-    //     type: String,
-    //     enum: ['SuperAdmin', 'Normal'],
-    //     default: 'Normal'
-    //   },
+    userType: {
+        type: String,
+        enum: ['SuperAdmin', 'Normal'],
+        default: 'Normal'
+      },
   
-    // userRole: {
-    //     type: String,
-    //     enum: ['SuperAdmin', 'Owner'],
-    //     default: 'SuperAdmin'
-    // },
+    userRole: {
+        type: String,
+        enum: ['SuperAdmin', 'Owner'],
+        default: 'SuperAdmin'
+    },
 
 });
 

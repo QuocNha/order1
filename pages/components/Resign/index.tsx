@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import Paper from '@material-ui/core/Paper';
 import { useSelector, useDispatch } from "react-redux";
-import { loadData1 } from '../../../redux/actions/ProductActions';
+import { loadResign } from '../../../redux/actions/UserAcctions';
 
 // import classes from '*.module.css';
 import { makeStyles,Typography,Stepper,StepLabel,Step } from '@material-ui/core';
 import ResignTep1 from './ResignTep1';
 import ResignTep2 from './ResignTep2';
 import ResignTep3 from './ResignTep3';
+import ResignTep4 from './ResignTep4';
 
 import Main from '../Layout/Main/Main';
 const  useStyles  =makeStyles((theme)=>({
@@ -45,6 +46,8 @@ const Resign = () => {
     const [password ,setPassword] = useState("");
     const [phone ,setPhone] = useState("");
     const dispatch = useDispatch();
+    const state = useSelector((state) => state.User);
+    
     const hadelChanceTep1= (
         step:number,
         name:string,
@@ -75,7 +78,34 @@ const Resign = () => {
     }
     //Login action
     const hadelSuccess= () => {
-         dispatch(loadData1("hehe")); 
+        interface User {
+            firstName: String,
+            lastName: String,
+            email:String,    
+            password: String,
+            address1:String
+            address2:String,
+            phone:String,
+            country:String
+            userType:String,
+            userRole: String,
+          }
+          const user: User = {
+            firstName: firstName,
+            lastName: lastName,
+            email:email,    
+            password: password,
+            address1:firsAddress,
+            address2:lastAddress,
+            phone:phone,
+            country:"Viet Name",
+            userType:"Normal",
+            userRole: "SuperAdmin",
+          }
+         dispatch(loadResign(user)); 
+        if(state.employeedata.status==="200"){
+            setActiveStep(3) ;
+        }  
     }
     const getStepContent=(step :number,
         lastName,
@@ -118,6 +148,7 @@ const Resign = () => {
              email={email}
              password={password}
              ></ResignTep3>
+             case 3:return <ResignTep4></ResignTep4>
              default: 
              throw new Error('Unknown step')   
         }
