@@ -2,12 +2,12 @@ import produce from "immer";
 import { actionUser } from "../actions/UserAcctions";
 
 const initialState = {
-  employeedata: null,
+  user: null,
   error: null
 };
 
 const successLoadData = (draft: any, { data }: any) => {
-  draft.employeedata = data;
+  draft.user = data;
 };
 
 const failureLoadData = (draft: any, { error }: any) => {
@@ -20,6 +20,12 @@ const reducer = (state = initialState, action: any) => {
           successLoadData(draft, action.payload);
           break;
         case actionUser.LOAD_RESIGN_FAILURE:
+          failureLoadData(draft, action.payload);
+          break;
+        case actionUser.LOAD_OUT_SUCCESS:
+          successLoadData(draft, action.payload);
+          break;
+        case actionUser.LOAD_OUT_FAILURE:
           failureLoadData(draft, action.payload);
           break;
       }

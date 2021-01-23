@@ -43,6 +43,6 @@ const loginUser :CustomerHandlers['loginUser'] = async ( {res,req,body: { email,
         sameSite: 'strict',
         path: '/'
       }))
-      return res.status(200).json({ data: null,token:token })
+      return res.status(200).json({ data: user,token:token })
 }
 export default loginUser;

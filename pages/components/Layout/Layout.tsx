@@ -2,6 +2,7 @@ import Head from 'next/head';
 // import SearchInput from '../SearchInput/SearchInput';
  //import useStyles from  './Layout';
 import MenuOrder from '../MenuOrder/MenuOrder';
+import {useDispatch, useSelector} from 'react-redux';
 import MenuBar from '../MenuOrder/MenuBar';
 import React, { useEffect, useState } from 'react';
 import SearchInput from '../SearchInput/SearchInput';
@@ -11,8 +12,9 @@ import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { fade, makeStyles } from '@material-ui/core';
-const drawerWidth = 240;
-   const useStyles = makeStyles((theme) => ({
+import {logOut} from'../../../redux/actions/UserAcctions'
+const drawerWidth=300;
+const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
     },
@@ -49,9 +51,21 @@ const drawerWidth = 240;
     drawerContainer: {
         overflow: 'auto',
     },
-  }));
+}));
 const Layout = ({ }) => {
-   const classes= useStyles(); 
+   const classes= useStyles();
+   const state = useSelector (state => state.User);
+   const dispatch = useDispatch();
+   const [user ,setuser] = useState({});
+   useEffect(() => {
+      const LoginUser = async(user) =>{
+           setuser(user.user.data.data)
+      }
+      LoginUser(state)
+     },[state]);
+    const handelLogOut = async() => {
+        dispatch(logOut());
+    } 
     return <React.Fragment>
         <Head>
             <title>Phong Vũ</title>
@@ -62,7 +76,10 @@ const Layout = ({ }) => {
             <Grid className={classes.container}>
                 <Grid className={classes.Menu}>
                     <AppBar position="fixed" className={classes.appBar}>
-                        <MenuBar></MenuBar>
+                        <MenuBar 
+                        user={user}
+                        handelLogOut={handelLogOut}
+                        ></MenuBar>
                     </AppBar>
                 </Grid>
                 <Grid

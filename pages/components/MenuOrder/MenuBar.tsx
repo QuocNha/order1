@@ -96,11 +96,12 @@ const menuId = 'primary-search-account-menu';
 const mobileMenuId = 'primary-search-account-menu-mobile';    
 const DataMenu : String [] =["Giao Hàng","Giao Hàng","Giao Hàng","Giao Hàng"]
     
-const MenuOrder= () => {
+const MenuOrder= (action) => {
   const [count, setCount] = useState(1);
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [isMenuBar, setIsMenuBar] = useState(null);
+   
   const isMenuOpen = Boolean(anchorEl);
   const openMenuBar = Boolean(isMenuBar);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -169,12 +170,19 @@ const MenuOrder= () => {
         open={isMenuOpen}
         onClose={handleMenuClose}
       >
-        <MenuItem > 
+        <MenuItem >
+        {action.user?(
           <Link href="/components/Layout/FormRegister">
-            <a>Đăng ký</a>
-          </Link>
+          <a>{action.user.email}</a>
+          </Link>  
+        ):(
+        <Link href="/components/Layout/FormRegister">
+        <a>Đăng ký</a>
+        </Link>
+        )} 
+          
         </MenuItem>
-        <MenuItem ><Link href="/components/Login/Login">My account</Link></MenuItem>
+        <MenuItem ><a onClick={action.handelLogOut}>logOut</a></MenuItem>
       </Menu>
     );
     const renderMobileMenu = (

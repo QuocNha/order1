@@ -1,7 +1,8 @@
 import { call, put, takeLatest } from "redux-saga/effects";
-import { actionUser,loadDataSuccess ,loadDataFailure} from "../actions/UserAcctions";
+import { actionUser,loadDataSuccess ,loadDataFailure,logOutFailure,logOutSuccess} from "../actions/UserAcctions";
 import getEmployee from "../../constant.config.api/resignUser";
 import loginUser from "../../constant.config.api/loginUser";
+import logOut from "../../constant.config.api/logOut";
 import NProgress from 'nprogress';
 import Router from 'next/router'
 
@@ -29,6 +30,20 @@ function* loadLogin(user:any) {
     yield put(loadDataFailure(err));
   }
 }
-const sagas = [takeLatest(actionUser.LOAD_RESIGN, loadResign),takeLatest(actionUser.LOAD_LOGIN, loadLogin)];
+function* loadLogOut() {
+  try{
+    const response = yield call(logOut);
+    console.log("response",response)
+    yield put(logOutSuccess(response));
+    Router.push("/")
+  }catch(error){
+    yield put(logOutFailure(error))
+  }
+}
+const sagas = [
+  takeLatest(actionUser.LOAD_RESIGN, loadResign),
+  takeLatest(actionUser.LOAD_LOGIN, loadLogin),
+  takeLatest(actionUser.LOAD_OUT, loadLogOut)
+];
 
 export default sagas;
