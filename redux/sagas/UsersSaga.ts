@@ -3,6 +3,7 @@ import { actionUser,loadDataSuccess ,loadDataFailure,logOutFailure,logOutSuccess
 import getEmployee from "../../constant.config.api/resignUser";
 import loginUser from "../../constant.config.api/loginUser";
 import logOut from "../../constant.config.api/logOut";
+import update from "../../constant.config.api/updateUser";
 import NProgress from 'nprogress';
 import Router from 'next/router'
 
@@ -48,10 +49,24 @@ function* loadLogOut() {
     yield put(logOutFailure(error))
   }
 }
+function* loadUpdate(user:any) {
+  try{
+    const response = yield call(update,user.payload);
+    // alert("Vao roi")
+    console.log("response",response)
+    yield put(loadDataSuccess(response));
+    // yield put(logOutSuccess(response));
+    // Router.push("/")
+  }catch(error){
+    yield put(loadDataFailure(error));
+    // yield put(logOutFailure(error))
+  }
+}
 const sagas = [
   takeLatest(actionUser.LOAD_RESIGN, loadResign),
   takeLatest(actionUser.LOAD_LOGIN, loadLogin),
-  takeLatest(actionUser.LOAD_OUT, loadLogOut)
+  takeLatest(actionUser.LOAD_OUT, loadLogOut),
+  takeLatest(actionUser.LOAD_UPDATE, loadUpdate)
 ];
 
 export default sagas;

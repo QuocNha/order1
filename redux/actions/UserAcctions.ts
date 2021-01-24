@@ -10,6 +10,11 @@ export const actionUser = {
     LOAD_OUT :"LOG_OUT",
     LOAD_OUT_SUCCESS: "LOAD_OUT_SUCCESS",
     LOAD_OUT_FAILURE: "LOAD_RESIGN_FAILURE",
+
+    LOAD_UPDATE:"LOAD_UPDATE",
+    LOAD_UPDATE_SUCCESS: "LOAD_UPDATE_SUCCESS",
+    LOAD_UPDATE_FAILURE: "LOAD_UPDATE_FAILURE",
+
 }
 export function loadResign(user:any) {
     return {
@@ -87,3 +92,27 @@ export function loadDataSuccess(data: []) {
       }
     };
   }
+
+export function  update(user) {
+  return {
+    type: actionUser.LOAD_UPDATE,
+    payload: user
+  }; 
+}
+export function updateSuccess(data: []) {
+  return {
+    type: actionUser.LOAD_UPDATE_SUCCESS,
+    payload: {
+      data: data
+    }
+  };
+}
+export function updateFailure(error:any) {
+  return {
+    type: actionUser.LOAD_UPDATE_SUCCESS,
+    payload: {
+      error: error
+    }
+  };
+}
+

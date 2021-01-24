@@ -11,18 +11,59 @@ const  useStyles  =makeStyles((theme)=>({
         marginLeft: 'auto',
         marginRight: 'auto',
     }
+    },
+    button:{
+        marginTop:theme.spacing(1)
     }    
 }));
 const UpdateUser = (action) => {
     const classes = useStyles();
-    console.log("action.user",action);
-    const [button ,setButton] = useState(false)
-    const handelClick =async () => {
-        
-        setButton(true);
+    const [firstName ,setFirstName] = useState(action.user?action.user.firstName:null)
+    const [lastName ,setLastName] = useState(action.user?action.user.lastName:null)
+    const [phone ,setPhone] = useState(action.user?action.user.lastName:null)
+    const [address1 ,setAddress1] = useState(action.user?action.user.address1:null)
+    const [address2,setAddress2] = useState(action.user?action.user.address2:null)
+    const [update,setUdate] = useState(false);
+    const handelFirstName =async (event) => {
+        setFirstName(event.target.value);
+        setUdate(true);
     }
+    const handelLastName =async (event) => {
+        setLastName(event.target.value);
+        setUdate(true);
+    }
+    const handelAddress1 =async (event) => {
+        setAddress1(event.target.value);
+        setUdate(true);
+    }
+    const handelPhone =async (event) => {
+        setPhone(event.target.value);
+        setUdate(true);
+    }
+    const handelAddress2 =async (event) => {
+        setAddress2(event.target.value);
+        setUdate(true);
+    }
+    
     const handelEditUser = () =>{
-        action.handelEditUser()
+       let firstName = (document.getElementById("firstName")).getAttribute('value');
+       let lastName = (document.getElementById("lastName")).getAttribute('value');
+       let phone = (document.getElementById("phone")).getAttribute('value');
+       let email = (document.getElementById("email")).getAttribute('value');
+       let address1 = (document.getElementById("firsAddress")).getAttribute('value');
+       let address2 = (document.getElementById("lastAddress")).getAttribute('value');
+        let user = {
+        firstName:firstName,
+        lastName:lastName,
+        phone:phone,
+        email:email,
+        address1:address1,
+        address2:address2
+        }   
+        if(update===true){
+            action.handelEditUser(user)
+        }
+         
     }
     return <React.Fragment>
             <main className={classes.root}>
@@ -32,65 +73,65 @@ const UpdateUser = (action) => {
                 <form >
                     <Grid container spacing={3}>
                         <Grid item xs={12} sm={6}>
-                            {button===false && (
+                            
                                     <TextField
-                                    onChange={handelClick}
+                                    onChange={handelFirstName}
                                     id="firstName"
                                     name="firstName"
                                     // label="First name"
                                     fullWidth
                                     autoComplete="given-name"
                                     required={true}
-                                    value={action.user?action.user.firstName:null}
-                                />
-                            )}
-                            
-                            
+                                    value={firstName}
+                                />       
                         </Grid>
                         <Grid item xs={12} sm={6}>
-                            
-                            <TextField
+                                <TextField
+                                onChange={handelLastName}
                                 required
                                 id="lastName"
-                                name="lastName"
-                                
+                                name="lastName"                
                                 fullWidth
                                 autoComplete="family-name"
-                                value={action.user?action.user.lastName:null}
+                                value={lastName}
                             />
                         </Grid>
                         <Grid item xs={12}>
-                            <TextField
-                                required
-                                id="firsAddress"
-                                name="firsAddress"
-                                
-                                fullWidth
-                                autoComplete="shipping address-line1"
-                                value={action.user?action.user.address1:null}
-                            />
+                                 <TextField
+                                 onChange={handelAddress1}
+                                 required
+                                 id="firsAddress"
+                                 name="firsAddress"
+                                 
+                                 fullWidth
+                                 autoComplete="shipping address-line1"
+                                 value={address1}
+                             />   
                         </Grid>
                         <Grid item xs={12}>
-                        
-                            <TextField
+                            
+                                <TextField
+                                onChange={handelAddress2}
                                 id="lastAddress"
                                 name="lastAddress"
                                 
                                 fullWidth
                                 autoComplete="shipping address-line2"
-                                value={action.user?action.user.address2:null}
-                            />
+                                value={address2}
+                            />    
+                                
+                            
                         </Grid>
                         <Grid item xs={12} sm={6}>
-                        
                             <TextField
-                                required
-                                id="phone"
-                                name="phone"
-                                fullWidth
-                                autoComplete="shipping address-level2"
-                                value={action.user?action.user.phone:null}
-                            />
+                            onChange={handelPhone}
+                            required
+                            id="phone"
+                            name="phone"
+                            fullWidth
+                            autoComplete="shipping address-level2"
+                            value={phone}
+                        />    
                         </Grid>
                         <Grid item >
                         
@@ -111,8 +152,8 @@ const UpdateUser = (action) => {
                     <Grid item xs={12} sm={6}>
                             <TextField
                                 required
-                                id="zip"
-                                name="zip"
+                                id="email"
+                                name="email"
                                 fullWidth
                                 autoComplete="shipping postal-code"
                                 value={action.user?action.user.email:null}
@@ -134,7 +175,8 @@ const UpdateUser = (action) => {
                         variant="contained"
                         color="primary"
                         type="submit"
-                         onClick={handelEditUser}       
+                         onClick={handelEditUser}
+                         className={classes.button}  
                     >
                         Save
                     </Button>

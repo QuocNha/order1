@@ -12,7 +12,7 @@ import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { fade, makeStyles } from '@material-ui/core';
-import {logOut} from'../../../redux/actions/UserAcctions'
+import {logOut,update} from'../../../redux/actions/UserAcctions'
 import UpdateUser from '../Resign/UpdateUser';
 import  Router  from 'next/router';
 const drawerWidth=300;
@@ -67,8 +67,8 @@ const Layout = ({ }) => {
     const handelLogOut = async() => {
         dispatch(logOut());
     }
-    const handelEditUser = async ()=>{
-        dispatch(logOut());
+    const handelEditUser = async (user)=>{
+         dispatch(update(user));
     } 
     useEffect(() => {
         const LoginUser = async(user) =>{
