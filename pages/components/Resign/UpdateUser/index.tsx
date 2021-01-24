@@ -29,7 +29,7 @@ const UpdateUser = (action) => {
                 <Typography variant="h4" component="h2"  align="center">
                     Information User
                 </Typography>
-                {/* <form >
+                <form >
                     <Grid container spacing={3}>
                         <Grid item xs={12} sm={6}>
                             {button===false && (
@@ -41,7 +41,7 @@ const UpdateUser = (action) => {
                                     fullWidth
                                     autoComplete="given-name"
                                     required={true}
-                                    value={action.user.firstName}
+                                    value={action.user?action.user.firstName:null}
                                 />
                             )}
                             
@@ -56,7 +56,7 @@ const UpdateUser = (action) => {
                                 
                                 fullWidth
                                 autoComplete="family-name"
-                                value={action.user.lastName}
+                                value={action.user?action.user.lastName:null}
                             />
                         </Grid>
                         <Grid item xs={12}>
@@ -67,7 +67,7 @@ const UpdateUser = (action) => {
                                 
                                 fullWidth
                                 autoComplete="shipping address-line1"
-                                value={action.user.address1}
+                                value={action.user?action.user.address1:null}
                             />
                         </Grid>
                         <Grid item xs={12}>
@@ -78,7 +78,7 @@ const UpdateUser = (action) => {
                                 
                                 fullWidth
                                 autoComplete="shipping address-line2"
-                                value={action.user.address2}
+                                value={action.user?action.user.address2:null}
                             />
                         </Grid>
                         <Grid item xs={12} sm={6}>
@@ -89,14 +89,14 @@ const UpdateUser = (action) => {
                                 name="phone"
                                 fullWidth
                                 autoComplete="shipping address-level2"
-                                value={action.user.phone}
+                                value={action.user?action.user.phone:null}
                             />
                         </Grid>
                         <Grid item >
                         
                             <TextField
                             id="state" name="state"  fullWidth
-                            value={action.user.userType} 
+                            value={action.user?action.user.userType:null} 
                             ></TextField>
                         </Grid>
                         
@@ -105,7 +105,7 @@ const UpdateUser = (action) => {
                         <div >  
                    
                 </div>
-                </form> */}
+                </form>
                 <form >
                     <Grid container spacing={3}>
                     <Grid item xs={12} sm={6}>
