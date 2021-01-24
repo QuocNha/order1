@@ -13,6 +13,8 @@ import MailIcon from '@material-ui/icons/Mail';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { fade, makeStyles } from '@material-ui/core';
 import {logOut} from'../../../redux/actions/UserAcctions'
+import UpdateUser from '../Resign/UpdateUser';
+import  Router  from 'next/router';
 const drawerWidth=300;
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -55,17 +57,30 @@ const useStyles = makeStyles((theme) => ({
 const Layout = ({ }) => {
    const classes= useStyles();
    const state = useSelector (state => state.User);
+   const [pages,setpage] = useState(1);
    const dispatch = useDispatch();
    const [user ,setuser] = useState({});
-   useEffect(() => {
-      const LoginUser = async(user) =>{
-           setuser(user.user.data.data)
-      }
-      LoginUser(state)
-     },[state]);
+  
+    const handelChanePges = async (page:number) =>{
+        setpage(page)
+    } 
     const handelLogOut = async() => {
         dispatch(logOut());
+    }
+    const handelEditUser = async ()=>{
+        dispatch(logOut());
     } 
+    useEffect(() => {
+        const LoginUser = async(user) =>{
+            if(user.user!==null){
+                setuser(user.user.data.data)
+            }else{
+                Router.push("/")
+            }
+             
+        }
+        LoginUser(state)
+       },[]);
     return <React.Fragment>
         <Head>
             <title>Phong Vũ</title>
@@ -79,6 +94,7 @@ const Layout = ({ }) => {
                         <MenuBar 
                         user={user}
                         handelLogOut={handelLogOut}
+                        handelChanePges={handelChanePges}
                         ></MenuBar>
                     </AppBar>
                 </Grid>
@@ -117,7 +133,15 @@ const Layout = ({ }) => {
                         </Drawer>
                     </Grid>
                     <Grid item md={10} className="BodyRight">
-                        <FoodBody></FoodBody>
+                    {pages===1 && (
+                         <FoodBody></FoodBody>   
+                    )}
+                    {pages===2 && (
+                         <UpdateUser
+                         user={user}
+                         handelEditUser={handelEditUser}
+                         ></UpdateUser>   
+                    )} 
                     </Grid>
                 </Grid>
             </Grid>

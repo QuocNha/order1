@@ -96,7 +96,7 @@ const menuId = 'primary-search-account-menu';
 const mobileMenuId = 'primary-search-account-menu-mobile';    
 const DataMenu : String [] =["Giao Hàng","Giao Hàng","Giao Hàng","Giao Hàng"]
     
-const MenuOrder= (action) => {
+const MenuOrder = (action) => {
   const [count, setCount] = useState(1);
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -126,6 +126,9 @@ const MenuOrder= (action) => {
       setAnchorEl(null);
       // handleMobileMenuClose();
     };
+    const handelChanePges= () =>{
+      action.handelChanePges(2)
+    }
     const handleMobileMenuClose = () => {
       setMobileMoreAnchorEl(null);
     };
@@ -172,9 +175,7 @@ const MenuOrder= (action) => {
       >
         <MenuItem >
         {action.user?(
-          <Link href="/components/Layout/FormRegister">
-          <a>{action.user.email}</a>
-          </Link>  
+          <a onClick={handelChanePges}>{action.user.email}</a>
         ):(
         <Link href="/components/Layout/FormRegister">
         <a>Đăng ký</a>

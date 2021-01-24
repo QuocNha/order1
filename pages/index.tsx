@@ -5,10 +5,10 @@ import Link from 'next/link';
 import { LayersClearOutlined } from '@material-ui/icons';
 import Layout from './components/Layout/Layout';
 import Login from './components/Login/Login';
-
+import {NextPage} from'next/types'
 // import styles from '../styles/Home.module.scss'
 
-const Home = () => {
+const Home:NextPage = () => {
   const handleClick = () => {
     location.href = "/components/Login";
   }

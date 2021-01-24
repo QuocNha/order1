@@ -12,7 +12,7 @@ import ResignTep3 from './ResignTep3';
 import ResignTep4 from './ResignTep4';
 
 import Main from '../Layout/Main/Main';
-import { isNull } from 'util';
+
 const  useStyles  =makeStyles((theme)=>({
         root:{
             width: 'auto',
@@ -105,10 +105,7 @@ const Resign = () => {
             userRole: "SuperAdmin",
           }
          dispatch(loadResign(user)); 
-        if( state !== null &&   state.employeedata.status===200){
-             setActiveStep(3) ;
-             NProgress.start();  
-        }  
+        
     }
     const getStepContent=(step :number,
         lastName,

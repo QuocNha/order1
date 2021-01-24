@@ -12,7 +12,7 @@ function* loadResign(name:any) {
       // alert("Vao roi");
       
       yield put(loadDataSuccess(response));
-     
+      Router.push('/components/Layout/Layout'); 
     } catch (err) {
       yield put(loadDataFailure(err));
       NProgress.done();
