@@ -10,6 +10,7 @@ function* loadResign(name:any) {
     try {
       const response = yield call(getEmployee,name.payload);
       // alert("Vao roi");
+      
       yield put(loadDataSuccess(response));
      
     } catch (err) {
@@ -22,9 +23,16 @@ function* loadLogin(user:any) {
   try {
     const response = yield call(loginUser,user.payload);
     // alert("Vao roi");
-    yield put(loadDataSuccess(response));
-    Router.push('/components/Layout/Layout');
-    alert("vao roi")
+    console.log(typeof response.status)
+    if(response.status===200){
+      yield put(loadDataSuccess(response));
+    Router.push('/components/Layout/Layout');    
+    }else if(response.status===400){
+      yield put(loadDataFailure(response.data.errors[0]));
+      console.log(typeof response.status)  
+    }
+    
+   
     NProgress.done();
   } catch (err) {
     yield put(loadDataFailure(err));

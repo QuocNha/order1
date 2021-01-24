@@ -100,7 +100,7 @@ const Login = ({ }) => {
         }));
         const classes = useStyles();
         const dispatch = useDispatch();
-        const state = useSelector((state) => state);
+        const state = useSelector((state) => state.User);
         const  formik =useFormik({
                 initialValues:{
                         email:'',
@@ -110,14 +110,16 @@ const Login = ({ }) => {
                         email:Yup.string().email('Invalid email address').required('Required*'),
                 }),
         onSubmit: values => {
-                alert(JSON.stringify(values, null, 1));
+                // alert(JSON.stringify(values, null, 1));
                 let user ={
                         email:values.email,
                         password:values.password
                 }
-                dispatch(loginLoad(user))
+                dispatch(loginLoad(user));
+              
         },
         });
+        console.log("state24/1",state.error)
         return <React.Fragment>
                 <Head>
                 <title>Phong Vũ</title>
@@ -156,6 +158,13 @@ const Login = ({ }) => {
                                                         >
                                                         {formik.errors.email}</div>
                                                         ) : null}
+                                                        {state.error!== null ? (
+                                                        <div 
+                                                         className={classes.errors}
+                                                        >
+                                                        {state.error.message}</div>
+                                                        ) : null}
+                                                        
                                                         <InputLabel htmlFor="password">password</InputLabel>
                                                         <Input
                                                                 
