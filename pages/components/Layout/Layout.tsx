@@ -12,9 +12,11 @@ import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { fade, makeStyles } from '@material-ui/core';
-import {logOut,update} from'../../../redux/actions/UserAcctions'
+import {logOut,update} from'../../../redux/actions/UserAcctions';
+import {loadData} from'../../../redux/actions/ProductActions'
 import UpdateUser from '../Resign/UpdateUser';
 import  Router  from 'next/router';
+import Product from './Product';
 const drawerWidth=300;
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -57,28 +59,38 @@ const useStyles = makeStyles((theme) => ({
 const Layout = ({ }) => {
    const classes= useStyles();
    const state = useSelector (state => state.User);
-   const [pages,setpage] = useState(1);
+   const product = useSelector (state => state.Product);
+   const [pages,setPage] = useState(1);
    const dispatch = useDispatch();
    const [user ,setuser] = useState({});
-  
+   const [pageProduct ,setPageProduct] = useState(1);
+   const [limit ,setLimit] = useState(10);
     const handelChanePges = async (page:number) =>{
-        setpage(page)
+        setPage(page)
     } 
     const handelLogOut = async() => {
         dispatch(logOut());
     }
     const handelEditUser = async (user)=>{
          dispatch(update(user));
+    }
+  
+    const handelChaneProduct =async () =>{
+       
+        setPage(3)
     } 
     useEffect(() => {
         const LoginUser = async(user) =>{
             if(user.user!==null){
-                setuser(user.user.data.data)
+                setuser(user.user.data.data);
+                dispatch(loadData("",""))
             }else{
                 Router.push("/")
             }
              
         }
+       
+        
         LoginUser(state)
        },[]);
     return <React.Fragment>
@@ -113,21 +125,23 @@ const Layout = ({ }) => {
                                 className={classes.drawerContainer}
                             >
                                 <List>
-                                    {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+                                    {['Product'].map((text, index) => (
                                         <ListItem button key={text}>
                                             <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                                            <ListItemText primary={text} />
+                                            <ListItemText
+                                            onClick={handelChaneProduct} 
+                                            primary={text} />
                                         </ListItem>
                                     ))}
                                 </List>
                                 <Divider />
                                 <List>
-                                    {['All mail', 'Trash', 'Spam'].map((text, index) => (
+                                    {/* {['All mail', 'Trash', 'Spam'].map((text, index) => (
                                         <ListItem button key={text}>
                                             <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
                                             <ListItemText primary={text} />
                                         </ListItem>
-                                    ))}
+                                    ))} */}
                                 </List>
                             </div>
                         </Drawer>
@@ -141,6 +155,10 @@ const Layout = ({ }) => {
                          user={user}
                          handelEditUser={handelEditUser}
                          ></UpdateUser>   
+                    )}
+                    {pages===3 && (
+                         <Product
+                         product={product}></Product>   
                     )} 
                     </Grid>
                 </Grid>

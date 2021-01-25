@@ -5,7 +5,8 @@
 const RESIGN = SERVERAPI + "api/resign";
 const LOGINUSER = SERVERAPI+ "api/login";
 const LOGOUT = SERVERAPI+ "api/logOut";
+const GETALLPRODUCT = SERVERAPI+ "api/product";
 
 export {
-    RESIGN,LOGINUSER,LOGOUT
+    RESIGN,LOGINUSER,LOGOUT,GETALLPRODUCT
 }

@@ -11,8 +11,8 @@ const updateUser: CustomerHandlers['updateUser'] = async ({
     let result={data:[]};
     try {
         await dbConnect();
-        console.log("Qua handlers update");
-        console.log("update.email",req.body)
+        // console.log("Qua handlers update");
+        // console.log("update.email",req.body)
         const _user = await User.findOneAndUpdate({
             email: update.email,
         }, update,{new: true});

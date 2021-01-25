@@ -2,12 +2,12 @@ import produce from "immer";
 import { actionTypes } from "../actions/ProductActions";
 
 const initialState = {
-  employeedata: null,
+  data: null,
   error: null
 };
 
 const successLoadData = (draft: any, { data }: any) => {
-  draft.employeedata = data;
+  draft.data = data;
 };
 
 const failureLoadData = (draft: any, { error }: any) => {

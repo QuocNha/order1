@@ -3,6 +3,7 @@ export const actionTypes = {
     LOAD_DATA1: "LOAD_DATA1",
     LOAD_DATA_SUCCESS: "LOAD_DATA_SUCCESS",
     LOAD_DATA_FAILURE: "LOAD_DATA_FAILURE"
+    
   };
   export interface IEmployee {
     id: number
@@ -11,10 +12,13 @@ export const actionTypes = {
     address: string,
     phone: number,
 }
-  export function loadData() {
+  export function loadData(page,limit) {
     return {
       type: actionTypes.LOAD_DATA,
-
+      payload: {
+        page:page,
+        limit:limit
+      }
     };
   }
   export function loadData1(name:String) {
