@@ -159,8 +159,8 @@ const MenuOrder = (action) => {
                   anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }} 
                  >
                   <MenuItem >Giao hàng</MenuItem>
-                  <MenuItem >Giao hàng</MenuItem>
-                  <MenuItem >Giao hàng</MenuItem>
+                  {/* <MenuItem >Giao hàng</MenuItem>
+                  <MenuItem >Giao hàng</MenuItem> */}
                 </Menu>
     );
     const renderMenu = (
