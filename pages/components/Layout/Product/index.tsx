@@ -1,9 +1,11 @@
 import React,{useState,useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
-import {AppBar, Typography,} from '@material-ui/core';
+import {AppBar, Typography,Grid,Button,Tooltip,IconButton} from '@material-ui/core';
 import { DataGrid } from '@material-ui/data-grid';
 import {loadData} from'../../../../redux/actions/ProductActions'
+import DeleteIcon from '@material-ui/icons/Delete';
+import Edit from '@material-ui/icons/Edit';
 
 const columns = [
     { field: 'id', headerName: 'ID', width: 70 },
@@ -27,12 +29,32 @@ const columns = [
         type: 'String',
         width: 130,
       },
-    {
+      {
         field: 'typeProduct',
         headerName: 'typeProduct',
         type: 'String',
         width: 130,
       },
+      {
+        field: 'Action',
+        headerName: 'Action',
+        width: 130,
+        renderCell: (params) => (
+          <React.Fragment>
+            <Tooltip title="Delete">
+              <IconButton aria-label="delete">
+                <DeleteIcon />
+              </IconButton>
+            </Tooltip>
+            <Tooltip title="Edit">
+              <IconButton aria-label="edit">
+                <Edit />
+              </IconButton>
+            </Tooltip>
+          </React.Fragment>
+
+        )
+      }
   ];
   
   const rows = [
@@ -63,9 +85,30 @@ const Product = (action) =>{
                     <Typography variant="h6">
                         Product
                     </Typography>
-                    <div style={{ height: 400, width: '100%' }}>
-                        <DataGrid rows={productList} columns={columns} pageSize={5} checkboxSelection />
-                    </div>
+                    <Grid container spacing={3}>
+                    <Grid item xs={12} sm={9}>
+                      
+                    </Grid>  
+                    <Grid item xs={12} sm={3}>
+                      <Button
+                      variant="contained"
+                      color="primary"
+                      type="submit"
+                      >Add Product</Button>
+                    </Grid>
+                    <Grid item xs={12} sm={12}>
+                      <div style={{ height: 400, width: '100%' }}>
+                        <DataGrid 
+                        rows={productList} 
+                        columns={columns} 
+                        pageSize={5} 
+                        checkboxSelection
+                        disableColumnMenu 
+                         />
+                      </div>
+                    </Grid>
+                    </Grid>
+                    
         </React.Fragment>
 }
 export default Product;

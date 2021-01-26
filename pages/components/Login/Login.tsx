@@ -1,4 +1,4 @@
-import { makeStyles,Grid,Avatar,Typography,InputLabel,Input,Button,Box,FormControlLabel,Checkbox } from '@material-ui/core';
+import {Paper, makeStyles,Grid,Avatar,Typography,InputLabel,Input,Button,Box,FormControlLabel,Checkbox } from '@material-ui/core';
 import { Formik } from 'formik';
 import Link from 'next/link';
 import React from 'react';
@@ -69,33 +69,63 @@ const Login = ({ }) => {
                                         width: '100%', // Fix IE 11 issue.
                                         marginTop: theme.spacing(1),
                                       },
+                                      '& .lableEmail':{
+                                        marginLeft:theme.spacing(4)
+                                      },
                                       '& .email':{
                                               width:'90%',
                                               marginTop:theme.spacing(2),
                                               marginBottom:theme.spacing(2),
+                                              marginLeft:theme.spacing(4)
                                       },
                                       '& .password':{
                                         width:'90%',
                                         marginTop:theme.spacing(2),
                                         marginBottom:theme.spacing(2),
+                                        marginLeft:theme.spacing(4)
                                 },
                                       '& button':{
                                               marginTop:theme.spacing(1)
                                       },
                                       '& label':{
-                                        marginLeft:theme.spacing(1)
+                                        // marginLeft:theme.spacing(1)
                                         },
                                         '& .forgotPassword':{
                                                 marginTop:theme.spacing(2),
                                                 padding:theme.spacing(1),
+                                                marginLeft:theme.spacing(2),
                                         }
 
                         }   
                 },
                 errors:{
                         color:'red',
-                        padding:theme.spacing(1)
+                        padding:theme.spacing(1),
+                        marginLeft:theme.spacing(3)
                 },
+                submit:{
+                        // width:theme.spacing(70),
+                        textAlign:'center',
+                        marginLeft:theme.spacing(3)
+                },
+                chexBox:{
+                        marginLeft:theme.spacing(2)
+                },
+                paper:{
+                        margin: theme.spacing(8, 4),
+                        backgroundColor:'#eef3f6',
+                },
+                title:{
+                        display:'flex',
+                        '& .information':{
+                                padding:theme.spacing(1),
+                                display:'grid',
+                                gridTemplateColumns: 'repeat(2, 1fr)'
+                        },
+                        '& .img':{
+                              
+                        }
+                }
                 
         }));
         const classes = useStyles();
@@ -128,10 +158,55 @@ const Login = ({ }) => {
                 </Head>
                  <div className={classes.root} >
                  <Grid container  component="main" className={classes.root1}>
-                        <Grid item md={5} className={classes.img}>
-                        <Image src="/nha.jpg" alt="me" width="600" height="530" />
-                        </Grid>
-                        <Grid item  md={7} className="">
+                         
+                                <Grid item md={6} className={classes.img}>
+                                <Paper className={classes.paper}>
+                                        <Grid item md={12} className={classes.title} >
+                                                <div className="img">
+                                                <Image src="/nha.jpg" alt="me" width="100" height="100" />    
+                                                </div>
+                                                <div className="information">
+                                                <Typography variant='h6'>NHA QUOC</Typography>
+                                                <Typography variant='h6'> </Typography>
+                                                <Typography variant='subtitle1'> Front End Developer</Typography>
+                                                <Typography variant='subtitle1'> </Typography>
+                                                <Typography variant='subtitle1'> Date of birth :</Typography>
+                                                <Typography variant='subtitle1'> June 24, 1993 </Typography>
+                                                <Typography variant='subtitle1'> Phone :</Typography>
+                                                <Typography variant='subtitle1'> 0866085734 </Typography>
+                                                <Typography variant='subtitle1'> Email </Typography>
+                                                <Typography variant='subtitle1'> 12130017@st.hcmuaf.edu.vn </Typography>
+                                                <Typography variant='subtitle1'> FaceBook :</Typography>
+                                                <Typography variant='subtitle1'> <a href="https://www.facebook.com/nha.quoc.56/">https://www.facebook.com/nha.quoc.56/</a> </Typography>
+                                                </div>
+                                        </Grid>
+                                        <Grid item md={12} >
+                                                <Typography variant='h6'>OBJECTIVE</Typography>
+                                                <Typography variant='subtitle1'>
+                                                        My Project Web Shop Online:
+                                                </Typography>
+                                                <Typography variant='subtitle1'>
+                                                <a href="https://order-demo-nextjs.herokuapp.com">https://order-demo-nextjs.herokuapp.com</a>
+                                                </Typography>
+                                                <Typography variant='subtitle1'>Build Project :</Typography>
+                                                <Typography variant='subtitle1'>Next js,GitHub,<a href="https://dashboard.heroku.com/apps">https://dashboard.heroku.com/apps</a> .</Typography>
+                                                <Typography variant='subtitle1'>Back End :</Typography>
+                                                <Typography variant='subtitle1'>NodeJs, bcryptjs, config, mongoose, morgan, nodemon.</Typography>
+                                                <Typography variant='subtitle1'>FontEnd :</Typography>
+                                                <Typography variant='subtitle1'> ReactJs, NextJs, Redux-Saga, Material UI , Formik and Yup, Axios.</Typography>
+                                                <Typography variant='subtitle1'>User Login :</Typography>
+                                                <Typography variant='subtitle1'>User :quocnha@gmail.com  </Typography>
+                                                <Typography variant='subtitle1'> Password: 15242635 </Typography>
+                                                <Typography variant='subtitle1'>  or <Link href="/components/Resign"><a>resign</a></Link> here </Typography>
+
+
+
+                                        </Grid>
+                                </Paper>
+                                </Grid>        
+                         
+                        
+                        <Grid item  md={6} className="">
                                 <div className="paper" >
                                         <Avatar className="avatar">
                                         <LockOutlinedIcon />
@@ -141,7 +216,7 @@ const Login = ({ }) => {
                                         </Typography>
                                         <form  className='form' onSubmit={formik.handleSubmit}>
                                                 
-                                                        <InputLabel htmlFor="firstName">Email</InputLabel>
+                                                        <InputLabel className="lableEmail" htmlFor="firstName">Email</InputLabel>
                                                         <Input
                                                                 
                                                                 id="email"
@@ -165,7 +240,7 @@ const Login = ({ }) => {
                                                         {state.error.message}</div>
                                                         ) : null}
                                                         
-                                                        <InputLabel htmlFor="password">password</InputLabel>
+                                                        <InputLabel className="lableEmail" htmlFor="password">Password</InputLabel>
                                                         <Input
                                                                 
                                                                 id="password"
@@ -183,12 +258,13 @@ const Login = ({ }) => {
                                                         {formik.errors.password}</div>
                                                         ) : null}
                                                         <FormControlLabel
+                                                        className={classes.chexBox}
                                                         control={<Checkbox value="remember" color="primary" />}
                                                         label="Remember me"
                                                         />
                                                         <Button
-                                                        // className={classes.submit}
-                                                        fullWidth
+                                                        //  className={classes.submit}
+                                                         fullWidth
                                                         type="submit"
                                                         variant="contained"
                                                         color="primary"
@@ -198,11 +274,11 @@ const Login = ({ }) => {
                                                                 Login
                                                         </Button>
                                                         <Grid container className="forgotPassword">
-                                                                <Grid item xs>
+                                                                {/* <Grid item xs>
                                                                         <Link href="/">
                                                                                 Forgot password?
                                                                         </Link>
-                                                                </Grid>
+                                                                </Grid> */}
                                                                 <Grid item>
                                                                         <Link href="/components/Resign">
                                                                                 {"Don't have an account? Sign Up"}
