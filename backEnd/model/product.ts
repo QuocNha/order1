@@ -46,7 +46,14 @@ const productSchema = new mongoose.Schema({
         type: String,
         enum: ['Eat', 'Drink'],
         default: 'Eat'
+    },
+    createById:{
+      type:String  
+    },
+    count:{
+      type: Number
     }
+
 
 });
 const Product : Model<UserDocument | CustomerDocument | ParticipantDocument | any> = mongoose.models.product || mongoose.model<UserDocument>("Product",productSchema);
