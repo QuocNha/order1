@@ -1,5 +1,6 @@
 import React,{useState,useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
+import {loadAddProduct} from'../../../../redux/actions/ProductActions'
 
 import {Checkbox,FormControlLabel,Popper,useTheme,MenuItem,Input,TextField,Select,AppBar, Typography,Grid,Button,Tooltip,IconButton,Modal,makeStyles,FormControl,InputLabel } from '@material-ui/core';
 import { DataGrid } from '@material-ui/data-grid';
@@ -70,17 +71,19 @@ const Product = (action) =>{
     const classes = useStyles();
     const dispatch = useDispatch();
     const [productList,SetProductList] = useState([]);
+    const user = useSelector((user)=>user.User)
     const [modalOpen,setModalOpen] = useState(false);
     const [modalEditOpen,setModalEditOpen] = useState(false)
     const [modalStyle] = React.useState(getModalStyle);
     const theme = useTheme();
-    const [personName, setPersonName] = React.useState([]);
+    const [personName, setPersonName] = React.useState("");
     const [record,SetRecord] = useState({
       nameProduct:"",price:"",address:"",count:""
     });
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [checked, setChecked] = React.useState(false);
     const [checkedNO, setCheckedNO] = React.useState(false);
+    const [openSelect,setOpenSelect] =useState(false);
     const open = Boolean(anchorEl);
   const id = open ? 'simple-popper' : undefined;
     const columns = [
@@ -116,7 +119,6 @@ const Product = (action) =>{
           headerName: 'Action',
           width: 130,
           renderCell: (params) => (
-            
             <React.Fragment>
               <Tooltip title="Delete" onClick={(event)=>{handelDelete(event);
                                                   SetRecord(params.row);
@@ -151,7 +153,6 @@ const Product = (action) =>{
                         inputProps={{ 'aria-label': 'primary checkbox' }}
                       />
                     }
-
                   />                    
               </div>
               </Popper>
@@ -170,6 +171,16 @@ const Product = (action) =>{
     const handelDelete =async (event)=>{
      
       setAnchorEl(anchorEl ? null : event.currentTarget);
+    }
+    const handleCloseSelect = async (event)=> {
+        setOpenSelect(false);
+    }
+    const handleOpenSelect = async (event)=> {
+      setOpenSelect(true);
+    } 
+    const handleChangeType = async (event)=>{
+      console.log("event.target.value",event.target.value)
+      setPersonName(event.target.value);
     }
     const handleChangeYes= async(event)=>{
       setChecked(event.target.checked);
@@ -207,7 +218,21 @@ const Product = (action) =>{
     const formik = useFormik({
       initialValues: {nameProduct:"",Price:"",address:"",count:""},
       validationSchema: Yup.object({}),
-      onSubmit: values => {}
+      onSubmit: values => {
+        let userID = user.user.data.data._id;
+            // console.log("User",user.user.data.data._id)
+         if(modalOpen==true){
+           let param = {
+              nameProduct:values.nameProduct,
+              address:values.address,
+              price:values.Price,
+              typeProduct:personName,
+              createById:userID,
+              count:values.count
+           }
+          dispatch(loadAddProduct(param))
+         }
+      }
     });
     useEffect(() => {
        const listProduct = (data) =>{
@@ -316,11 +341,11 @@ const Product = (action) =>{
                             <Select
                               labelId="demo-mutiple-name-label"
                               id="demo-mutiple-name"
-                              multiple
-                               value={personName}
-                              // onChange={handleChange}
-                              input={<Input />}
-                            MenuProps={MenuProps}
+                              open={openSelect}
+                              onClose={handleCloseSelect}
+                              onOpen={handleOpenSelect}
+                              value={personName}
+                              onChange={handleChangeType}
                             >
                               {["Eat","Drink"].map((name) => (
                                     <MenuItem key={name} value={name} 

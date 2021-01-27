@@ -4,6 +4,8 @@ import { actionTypes, loadDataFailure, loadDataSuccess } from "../actions/Produc
 import { actionUser } from "../actions/UserAcctions";
 import getEmployee from "../../constant.config.api/getAllUser"
 import getAllProduct from "../../constant.config.api/getAllProduct"
+import addProduct from "../../constant.config.api/addProduct"
+
 function* loadDataSaga(name:any) {
   console.log("name",name)
   try {
@@ -26,6 +28,21 @@ function* loadProduct(payload:any) {
   }
 }
 
-const sagas = [takeLatest(actionTypes.LOAD_DATA, loadProduct)];
+function* loadAddProduct(payload:any) {
+  try {
+    console.log("dataAddRoDuct",payload.payload)
+     const response = yield call(addProduct,payload.payload);
+    // alert("Vao roi");
+    let data=[];
+   
+    yield put(loadDataSuccess(data));
+  } catch (err) {
+    yield put(loadDataFailure(err));
+  }
+}
+const sagas = [
+                takeLatest(actionTypes.LOAD_DATA, loadProduct),
+                takeLatest(actionTypes.LOAD_ADD_PRODUCT, loadAddProduct)
+              ];
 
 export default sagas;

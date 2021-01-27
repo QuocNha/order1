@@ -30,7 +30,6 @@ const  getAllProduct :ProductHandlers['getAllProduct'] = async({req,res,body})=>
             message: error.message,
         });
     }
-    console.log("result.data",result.data)
      return res.status(200).json({
          data: result.data,
          errors: [{message: 'Get list susscess.'}],

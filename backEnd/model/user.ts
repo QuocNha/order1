@@ -1,14 +1,18 @@
 import mongoose ,{ Document, Model } from "mongoose";
 import jwt from "jsonwebtoken";
 export interface UserDocument extends  Document {
-    id: string
-    email: string
-    userType: string
-    userRole: string
-    fullName: string;
-    token: string;
-    comparePassword(password: string): Promise<boolean>;
-    generateJWT(): string;
+    _id:mongoose.Schema.Types.ObjectId,
+    firstName: String,
+    lastName:String,
+    email:String,
+    password: String,
+    address1:String,
+    address2:String,
+    phone:String,
+    country:String,
+    userType:  String,
+    userRole:  String,
+      
 }
 
 // Khách hàng
@@ -79,22 +83,22 @@ export type PayloadJWT = {
     userType: string
     userRole: string
 }
-UserSchema.methods.generateJWT = function (this: UserDocument) {
-    const today = new Date();
-    const expirationDate = new Date(today);
-    expirationDate.setDate(today.getDate());
+// UserSchema.methods.generateJWT = function (this: UserDocument) {
+//     const today = new Date();
+//     const expirationDate = new Date(today);
+//     expirationDate.setDate(today.getDate());
 
-    let payload : PayloadJWT = {
-        id: this._id,
-        email: this.email,
-        userType: this.userType,
-        userRole: this.userRole
-    };
+//     let payload : PayloadJWT = {
+//         id: this._id,
+//         email: this.email,
+//         userType: this.userType,
+//         userRole: this.userRole
+//     };
 
-    return jwt.sign(payload, process.env.JWT_SECRET, {
-        expiresIn: '12h' //expires in 
-    });
-};
+//     return jwt.sign(payload, process.env.JWT_SECRET, {
+//         expiresIn: '12h' //expires in 
+//     });
+// };
 // function generatePasswordHash(password) {
 //     return bcrypt.genSalt(10) // 10 is default
 //     .then((salt) => {
@@ -116,5 +120,6 @@ UserSchema.methods.generateJWT = function (this: UserDocument) {
 //                 next(err);
 //             });
 // };
-const User : Model<UserDocument | CustomerDocument | ParticipantDocument | any> = mongoose.models.User || mongoose.model<UserDocument>("User", UserSchema);
+// const User : Model<UserDocument | CustomerDocument | ParticipantDocument | any> = mongoose.models.User || mongoose.model<UserDocument>("User", UserSchema);
+const User : Model<UserDocument |any> = mongoose.models.User || mongoose.model<UserDocument>("User", UserSchema);
 export default User;

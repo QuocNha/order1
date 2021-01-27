@@ -5,14 +5,20 @@ import type { ProductHandlers } from '..';
 
 const  addProduct :ProductHandlers['addProduct'] = async({req,res,body})=>{
     const updateProduct = req.body;
+  
     let result={data:[]};
     await dbConnect(); 
+    
+    console.log("updateProduct",body)
+    console.log("updateProduct",res.body)
         body={
             _id:mongoose.Types.ObjectId(),
             nameProduct:updateProduct.nameProduct,
             address:updateProduct.address,
             price:updateProduct.price,
-            typeProduct:updateProduct.Eat
+            typeProduct:updateProduct.Eat,
+            count:updateProduct.count,
+            createById:updateProduct.createById,
         }
         // console.log("body",body)
         const product= await Product.create(body);
@@ -27,10 +33,10 @@ const  addProduct :ProductHandlers['addProduct'] = async({req,res,body})=>{
     }
     
     result.data = product;
-    console.log("product11111111111",result.data)
-    console.log("product11111111111",res)
+    // console.log("product11111111111",result.data)
+    // console.log("product11111111111",res)
      return res.status(200).json({
-         data: result.data,
+         data: ({ data:res.data ?? null }),
          errors: [{message: 'Tạo thành công.'}],
      })
     

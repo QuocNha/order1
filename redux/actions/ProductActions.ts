@@ -2,16 +2,12 @@ export const actionTypes = {
     LOAD_DATA: "LOAD_DATA",
     LOAD_DATA1: "LOAD_DATA1",
     LOAD_DATA_SUCCESS: "LOAD_DATA_SUCCESS",
-    LOAD_DATA_FAILURE: "LOAD_DATA_FAILURE"
+    LOAD_DATA_FAILURE: "LOAD_DATA_FAILURE",
+
+    LOAD_ADD_PRODUCT:"LOAD_ADD_PRODUCT"
     
   };
-  export interface IEmployee {
-    id: number
-    name: string,
-    email: string,
-    address: string,
-    phone: number,
-}
+
   export function loadData(page,limit) {
     return {
       type: actionTypes.LOAD_DATA,
@@ -28,11 +24,7 @@ export const actionTypes = {
 
     };
   }
-  export interface EmployeeState {
-    readonly data: IEmployee[]
-  }
-  
-  export function loadDataSuccess(data: IEmployee[]) {
+  export function loadDataSuccess(data) {
     return {
       type: actionTypes.LOAD_DATA_SUCCESS,
       payload: {
@@ -47,5 +39,12 @@ export const actionTypes = {
       payload: {
         error: error
       }
+    };
+  }
+  export function loadAddProduct(param:{}) {
+    return {
+      type: actionTypes.LOAD_ADD_PRODUCT,
+      payload: param
+
     };
   }

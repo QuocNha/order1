@@ -3,7 +3,7 @@ import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import AppsIcon from '@material-ui/icons/Apps';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import { useSelector, useDispatch } from "react-redux";
-import { loadData,loadData1, IEmployee } from './../../../../redux/actions/ProductActions';
+import { loadData,loadData1 } from './../../../../redux/actions/ProductActions';
 import {Grid, makeStyles,Button,Divider} from '@material-ui/core'
 import React, { useEffect } from 'react';
 const useStyles =makeStyles ((theme) => ({
