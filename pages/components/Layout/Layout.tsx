@@ -17,6 +17,7 @@ import {loadData} from'../../../redux/actions/ProductActions'
 import UpdateUser from '../Resign/UpdateUser';
 import  Router  from 'next/router';
 import Product from './Product';
+import homPages from '../homePages';
 const drawerWidth=300;
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -94,11 +95,7 @@ const Layout = ({ }) => {
         LoginUser(state)
        },[]);
     return <React.Fragment>
-        <Head>
-            <title>Phong Vũ</title>
-            <link rel="icon" href="/favicon.ico" />
-            <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        </Head>
+       
         <div className={classes.root} >
             <Grid className={classes.container}>
                 <Grid className={classes.Menu}>

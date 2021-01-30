@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { LayersClearOutlined } from '@material-ui/icons';
 import Layout from './components/Layout/Layout';
 import Login from './components/Login/Login';
+import HomePages from './components/homePages/index';
 import {NextPage} from'next/types'
 // import styles from '../styles/Home.module.scss'
 
@@ -12,17 +13,18 @@ const Home:NextPage = () => {
   const handleClick = () => {
     location.href = "/components/Login";
   }
-//   useEffect(() => {
-//    const onlick = ()=>{
-//     handleClick();
-//   }
-//    onlick();
-// }, []); 
   return (
     <Fragment>
+
+        <Head>
+            <title>Phong Vũ</title>
+            <link rel="icon" href="/favicon.ico" />
+            <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css"/>
+        </Head>
       <div id="demo" >
       {/* <Link  href="/components/Layout/Layout"><a >Vui lòng click để vào trang  web</a></Link> */}
-      <Login></Login>
+      <HomePages></HomePages>
       </div>
     
     </Fragment>

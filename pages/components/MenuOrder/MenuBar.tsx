@@ -278,7 +278,7 @@ const MenuOrder = (action) => {
                   </IconButton>
                   
                   <Typography variant="h6" >
-                    <Link href="/">
+                    <Link href="/components/homePages">
                       Phong Vũ
                     </Link>
                   </Typography>

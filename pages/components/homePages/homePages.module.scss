@@ -1,0 +1,247 @@
+
+.wrapperNavBar{
+    .topHeader{
+        height: 260px;
+        padding-top: 50px;
+        padding-bottom: 50px;
+        .topHeaderLeft{
+            .logo{
+                font-family: 'Dancing Script', cursive;
+                width: 275px;
+                font-size: 25px;
+                display: block;
+                margin-left: 3rem;
+            }
+        }
+        .topHeaderCenter{
+            
+            .contactHolder{
+                font-size: 18px;
+                a{
+
+                    display: inline-block;
+                    padding: 1rem;
+                    .phone{
+                        margin-right: 0.5rem;
+                    }
+                    .address{
+                        margin-right: 0.5rem;
+                        
+                    }
+                }
+                
+            }
+            .reservationButton{
+                font-family: "Fredericka the Great";
+                font-size: 38px;
+                border: 1px dotted #f27257;
+                display: inline-block;
+                padding: 0.5rem 1rem;
+                border-radius: 0.25rem;
+                transition: 0.25s ease all;
+                cursor: pointer;
+                flex-direction: none;
+                &:hover{
+                    background-color: #f27257;
+                    color: white;
+                }
+               
+            } 
+           
+        }
+        .topHeaderRight{
+           padding: 1rem;
+         
+            .facebook{
+                // background-color: blue;
+                font-size: 40px;
+                margin-right: 1rem;
+                color: #f27257 ;
+                //hover giảm màu
+                & :hover {
+                    color:darken(#f27257,15%);
+                }
+            }
+            .user{
+                font-size: 40px;
+                // background-color: blue;
+                color: #f27257 ;
+                & :hover {
+                    color:darken(#f27257,15%);
+                }
+            }
+            
+        }
+    } 
+        
+    
+    margin-bottom: -350px;
+    nav {
+        border-bottom: 1px solid rgba(#5DA0AA,0.5);
+        border-top:  1px solid rgba(#5DA0AA,0.5);
+        font-family: 'Source Sans Pro', sans-serif;
+        padding: 0rem;
+        ul{
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            flex: 1;
+            justify-content: space-between;
+            li{
+                list-style:none inside;
+                display: inline;
+                //  float: left;
+                line-height: 35px; /*Cho text canh giữa menu*/ 
+                 margin-right:2rem;
+                a{
+                    font-weight: 500;
+                    font-size: 22px;
+                    text-transform: uppercase;
+                    text-decoration: none;
+                    padding: 1.5rem 0.5rem ;
+                }
+            }
+        }
+       
+    }
+   
+}
+.homeBananer{
+    height: 1080px;
+    text-align: center;
+    background-position:top center;
+    background: #ccc;
+    background-image: url('../../../public/MKT_1930_Q2_2020_Summer-Launch-banners-02Hero-web-summer-collection-banner.jpg');
+    background-size: cover;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 18px;
+    line-height: 1.25;
+    padding-bottom: 115px;
+    flex-direction: column;
+    //them hieu ung cho bacgrou
+    & ::after{
+        z-index: 2000;
+        content: "";
+        display: block;
+        height: 230px;
+        background: linear-gradient(to top,rgba(white,0),rgba(white,1));
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+justify-content: flex-end;
+ .homeBananer1{
+     height: 200px;
+ }
+ .homeBananer2{
+    height: 200px;
+}
+h1{
+    font-family: 'Fredericka the Great', cursive;
+    font-size: 100px;
+}
+}
+.homeCallToAction{
+    padding: 1rem;
+    
+    .callToAction{
+        border-radius: 100%;
+         font-size: 100px;
+        background-color: #223A47;
+        padding-bottom: 100%;
+        //chen2\ hai  khoi lai voi nhau
+        position: relative;
+        margin-left: 1rem;
+        .img{
+            border-radius: 50%;
+            
+            background-image:url(../../../public/images.jpg) ;
+            background-color: red;
+            top: 30px;
+            left:30px;
+            right: 30px;
+            bottom:30px ;
+            position: absolute;
+            transition: ease 0.25s all; 
+            // dieu chinh do dam nhat
+            opacity: 0.85;    
+        }
+        &:hover{
+            .title{
+                left: 0%;
+                color: #f27257;
+                background: rgba(white,  1.0);
+            }
+            .img{
+                top: 5px;
+                left: 5px;
+                right: 5px;
+                bottom: 5px;
+                opacity:1;  
+            }
+        }
+        .title{
+            font-size: 20px;
+            position: absolute;
+            bottom: 45px;
+            left: 50%;
+            //ket hop voi transition lam thuoc tinh hover
+            right: -15px;
+            text-align: center;
+            background: #5DA0AA;
+            padding: 0.5rem 1rem;
+            color: white;
+            border: 1px dashed white;
+            border-radius: 0.25rem;
+            transition: ease 0.25s all; 
+            font-family: 'Fredericka the Great', cursive;
+        }
+
+    }
+    
+}
+.homeWelcome{
+    text-align: center;
+   
+    h2{
+        margin-top: 2rem;
+        line-height: 1;
+
+        span{
+            color: #FFB5A6;
+            font-weight: "Pacifico";
+            font-size: 80px;
+            transition: translate(140px,30px);
+        }
+        font-size: 36px;
+        font-family: 'Fredericka the Great', cursive;
+        display: block;
+        border-bottom: 1px solid #5DA0AA;
+        margin-bottom: 60px;
+        padding-bottom: 60px;
+    }
+    
+        .tagLine{
+            font-size: 24px;
+            color:  #5DA0AA;
+        }
+        .reservationButton{
+            font-family: "Fredericka the Great";
+            font-size: 19px;
+            border: 1px dotted #f27257;
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            transition: 0.25s ease all;
+            cursor: pointer;
+            flex-direction: none;
+            &:hover{
+                background-color: #f27257;
+                color: white;
+                font-size: 25px;
+            }
+           
+        }
+    
+}
