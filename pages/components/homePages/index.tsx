@@ -1,12 +1,45 @@
-import { Grid ,Typography,Button} from '@material-ui/core';
+import { Grid ,Typography,Button,Paper} from '@material-ui/core';
 import React from 'react'
 import styles from  './homePages.module.scss';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import PhoneIcon from '@material-ui/icons/Phone';
 import DnsIcon from '@material-ui/icons/Dns';
+import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import Link from 'next/link';
+import classes from '*.module.css';
+import Carousel from 'react-material-ui-carousel'
 const HomPages = () =>{
+    const Item=(props)=>
+{
+    return (
+        <Paper>
+            <h2>{props.item.name}</h2>
+            <p>{props.item.description}</p>
+            <Button className="CheckButton">
+                Buy Order
+            </Button>
+        </Paper>
+    )
+}
+    var items = [
+        {
+            name: "Drink 1",
+            description: "Nong Lam University"
+        },
+        {
+            name: "Drink 2",
+            description: "Nong Lam University"
+        },
+        {
+            name: "Drink 2",
+            description: "Nong Lam University"
+        },
+        {
+            name: "Drink 2",
+            description: "Nong Lam University"
+        }
+    ]
     return <React.Fragment>  
             <div className={styles.wrapperNavBar}>
                
@@ -91,6 +124,32 @@ const HomPages = () =>{
                             </div> 
                             
                     </Grid>
+                </Grid>
+            </div>
+            <div className={styles.homeNew}>
+                <div className="backGround"></div>
+                <Grid container>
+                            <Grid item md={3}>
+                                <div className={styles.callToAction}>
+                                    <div className={styles.img}>
+                                    </div>
+                                    <div className={styles.date}>Sun 13 May <NavigateNextIcon className={styles.nextDay}></NavigateNextIcon></div>
+                                    <div className={styles.category}>Drink Menu</div>
+                                </div> 
+                            </Grid>
+                            <Grid item md={3}></Grid>
+                            <Grid item md={6}>
+                                <h2>Mon day</h2>
+                                <div className={styles.container}>
+                                    <div id={styles.slider}>
+                                    <Carousel>
+                                        {
+                                        items.map( (item, i) => <Item key={i} item={item} /> )
+                                         }
+                                    </Carousel>
+                                    </div>
+                                </div>
+                            </Grid>
                 </Grid>
             </div>
             <div className={styles.homeWelcome}>

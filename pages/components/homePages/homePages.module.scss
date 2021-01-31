@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Fredericka+the+Great&display=swap');
 .wrapperNavBar{
     .topHeader{
         height: 260px;
@@ -111,7 +111,7 @@
     text-align: center;
     background-position:top center;
     background: #ccc;
-    background-image: url('../../../public/MKT_1930_Q2_2020_Summer-Launch-banners-02Hero-web-summer-collection-banner.jpg');
+    background-image: url('../../../public/Untitled-1.jpg');
     background-size: cover;
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 18px;
@@ -243,5 +243,101 @@ h1{
             }
            
         }
+       
+    
+}
+.homeNew{
+    padding-top:20px;
+    padding-bottom: 200px;
+    position: relative;
+    h2{
+        font-family: "Fredericka the Great";
+        cursor: pointer;
+        font-size: 40px;
+        margin-bottom: 0.5rem;
+         color: #f27257;   
+    }
+    .container{
+        line-height: 2;
+        font-weight: 300;
+    }
+    .date{
+        font-size: 15px;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        padding: 0.5rem;
+        background: #f27257;
+        color: white;
+        border: 1px dashed white;
+        right: -15px;
+    }
+    .callToAction{
+        border-radius: 100%;
+        font-size: 100px;
+        background-color: #223A47;
+        padding-bottom: 90%;
+        //chen2\ hai  khoi lai voi nhau
+        position: relative;
+        .img{
+            border-radius: 50%;    
+            background-image:url(../../../public/images.jpg) ;
+            background-color: red;
+            top: 30px;
+            left:30px;
+            right: 30px;
+            bottom:30px ;
+            position: absolute;
+            transition: ease 0.25s all; 
+            // dieu chinh do dam nhat
+            opacity: 0.85;    
+        }
+        &:hover{
+            .category{
+                left: 0%;
+                color: #f27257;
+                background: rgba(white,  1.0);
+            }
+            .img{
+                top: 5px;
+                left: 5px;
+                right: 5px;
+                bottom: 5px;
+                opacity:1;  
+            }
+        }
+        .category{
+            font-size: 20px;
+            position: absolute;
+            bottom: 45px;
+            left: 50%;
+            //ket hop voi transition lam thuoc tinh hover
+            right: -15px;
+            text-align: center;
+            background: #5DA0AA;
+            padding: 0.5rem 1rem;
+            color: white;
+            border: 1px dashed white;
+            border-radius: 0.25rem;
+            transition: ease 0.25s all; 
+            font-family: 'Fredericka the Great', cursive;
+        }
+
+    }
+
+    //lam slider
+    .container{
+        #slider{
+            margin: 0 auto;
+            width: 800px;
+            max-width: 100%;
+            text-align: center;
+            border: 2px dotted #f27257;
+                padding: 30px;
+                position: relative;
+                z-index: 1; 
+        }
+    }
     
 }

@@ -19,8 +19,7 @@ const Home:NextPage = () => {
         <Head>
             <title>Phong Vũ</title>
             <link rel="icon" href="/favicon.ico" />
-            <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css"/>
+            <meta name="viewport" content="initial-scale=1.0, width=device-width" />      
         </Head>
       <div id="demo" >
       {/* <Link  href="/components/Layout/Layout"><a >Vui lòng click để vào trang  web</a></Link> */}
