@@ -1,24 +1,44 @@
-import { Grid ,Typography,Button,Paper} from '@material-ui/core';
-import React from 'react'
+import { Grid ,Typography,Button,Paper,MenuItem,IconButton,Badge} from '@material-ui/core';
+import React,{useState,useEffect} from 'react'
 import styles from  './homePages.module.scss';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import PhoneIcon from '@material-ui/icons/Phone';
 import DnsIcon from '@material-ui/icons/Dns';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import Link from 'next/link';
-import classes from '*.module.css';
-import Carousel from 'react-material-ui-carousel'
+import Carousel from 'react-material-ui-carousel';
+import Image from 'next/image'
+import Product from '../homePages/product';
+
 const HomPages = () =>{
+    const [chanepages,setChanePages]= useState<number>(1);
+   const  handelChanceProduct= () =>{
+       setChanePages(2);
+   }
     const Item=(props)=>
 {
     return (
         <Paper>
-            <h2>{props.item.name}</h2>
-            <p>{props.item.description}</p>
-            <Button className="CheckButton">
-                Buy Order
-            </Button>
+            <Grid container>
+                <Grid item md={6}>
+                    <Image
+                        width={300}
+                        height={300} src="/Drink.jpg"
+                    ></Image>
+                </Grid>
+                <Grid item md={6}>
+                    <h2 onClick={handelChanceProduct}>{props.item.name}</h2>
+                    <p onClick={handelChanceProduct}>{props.item.description}</p>
+                    <p onClick={handelChanceProduct}>1 Đồng</p>
+                    <Button className="CheckButton" onClick={handelChanceProduct}>
+                        Buy now
+                    </Button>
+                </Grid>
+            </Grid>
+
+            
         </Paper>
     )
 }
@@ -52,29 +72,45 @@ const HomPages = () =>{
                             </div>   
                         </div>
                         </Grid>
-                        <Grid item md={6}>
+                        <Grid item md={5}>
                             <div className={styles.topHeaderCenter}>
                                 <div className={styles.contactHolder}>
                                     <a><PhoneIcon className={styles.phone}/>0866085734</a>
                                     <a><DnsIcon className={styles.address}/>Nong Lam Univerity</a>
+                                   
                                 </div>
                                 <div className={styles.reservationButton}> <Link href="/components/Login/Login">How To Login Admin </Link></div>
                             </div>
                         </Grid>
-                        <Grid item md={2}>
+                        <Grid item md={3}>
                             <div className={styles.topHeaderRight}>
-                                <FacebookIcon className={styles.facebook}/>
-                                <Link href="/components/Login/Login"><a><AccountCircleIcon className={styles.user}/></a></Link>                            
+                            
+                                <IconButton aria-label="show 4 new mails" color="inherit">
+                                            <Badge badgeContent={4} color="secondary">
+                                            <Link href="/" ><a> <FacebookIcon className={styles.facebook}/></a></Link>                                            </Badge>
+                                </IconButton> 
+                                <IconButton aria-label="show 4 new mails" color="inherit">
+                                            <Badge badgeContent={4} color="secondary">
+                                            <Link href="/components/Login/Login" ><a><AccountCircleIcon className={styles.user}/></a></Link>
+                                            </Badge>
+                                </IconButton> 
+                                 <IconButton aria-label="show 4 new mails" color="inherit">
+                                            <Badge badgeContent={4} color="secondary">
+                                                <ShoppingCartIcon  className={styles.user}/>
+                                            </Badge>
+                                </IconButton> 
+                                                      
                             </div>
                         </Grid>
                         </Grid>    
                     </div>    
-                    <nav>
+                    <nav >
                         <ul>
                         <li><a href="#">Home</a></li>
                         <li><a href="#">Drink </a></li>
                         <li><a href="#">Luch</a></li>
                         <li><a href="#">Fruit</a></li>
+                        <li ><a href="#">Shopping Card</a></li>
                         </ul>
                     </nav>
             </div>
@@ -88,70 +124,79 @@ const HomPages = () =>{
                     </div>
                      
             </div>
-             <div className={styles.homeCallToAction}>
-                <Grid container>
-                    <Grid item md={3}>
-                           <div className={styles.callToAction}>
-                               <div className={styles.img}>
-                               </div>
-                               <div className={styles.title}>Drink Menu</div>
-                            </div> 
-                    </Grid>
-                    <Grid item md={3}>
-                           <div className={styles.callToAction}>
-                           <div className={styles.img}>
+            {chanepages==1 && (
+                <React.Fragment>
+                    <div className={styles.homeCallToAction}>
+                        <Grid container>
+                            <Grid item md={3}>
+                                <div className={styles.callToAction}>
+                                    <div className={styles.img}>
+                                    </div>
+                                    <div className={styles.title}>Drink Menu</div>
+                                </div>
+                            </Grid>
+                            <Grid item md={3}>
+                                <div className={styles.callToAction}>
+                                    <div className={styles.img}>
 
-                            </div>
-                            <div className={styles.title}>Luch Menu</div>
-                            
-                            </div> 
-                    </Grid>
-                    <Grid item md={3}>
-                           <div className={styles.callToAction}>
-                           <div className={styles.img}>
+                                    </div>
+                                    <div className={styles.title}>Luch Menu</div>
 
-                            </div>
-                            <div className={styles.title}>Fruit Menu</div>
-                            </div> 
-                            
-                    </Grid>
-                    <Grid item md={3}>
-                           <div className={styles.callToAction}>
-                           <div className={styles.img}>
+                                </div>
+                            </Grid>
+                            <Grid item md={3}>
+                                <div className={styles.callToAction}>
+                                    <div className={styles.img}>
 
-                            </div>
-                            <div className={styles.title}>Dinner Menu</div>
-                            </div> 
-                            
-                    </Grid>
-                </Grid>
-            </div>
-            <div className={styles.homeNew}>
-                <div className="backGround"></div>
-                <Grid container>
+                                    </div>
+                                    <div className={styles.title}>Fruit Menu</div>
+                                </div>
+
+                            </Grid>
+                            <Grid item md={3}>
+                                <div className={styles.callToAction}>
+                                    <div className={styles.img}>
+
+                                    </div>
+                                    <div className={styles.title}>Dinner Menu</div>
+                                </div>
+
+                            </Grid>
+                        </Grid>
+                    </div>
+                    <div className={styles.homeNew}>
+                        <div className="backGround"></div>
+                        <Grid container>
                             <Grid item md={3}>
                                 <div className={styles.callToAction}>
                                     <div className={styles.img}>
                                     </div>
                                     <div className={styles.date}>Sun 13 May <NavigateNextIcon className={styles.nextDay}></NavigateNextIcon></div>
                                     <div className={styles.category}>Drink Menu</div>
-                                </div> 
+                                </div>
                             </Grid>
                             <Grid item md={3}></Grid>
                             <Grid item md={6}>
                                 <h2>Mon day</h2>
                                 <div className={styles.container}>
                                     <div id={styles.slider}>
-                                    <Carousel>
-                                        {
-                                        items.map( (item, i) => <Item key={i} item={item} /> )
-                                         }
-                                    </Carousel>
+                                        <Carousel>
+                                            {
+                                                items.map((item, i) => <Item key={i} item={item} />)
+                                            }
+                                        </Carousel>
                                     </div>
                                 </div>
                             </Grid>
-                </Grid>
-            </div>
+                        </Grid>
+                    </div>
+                </React.Fragment>
+            )}
+            {chanepages==2 && (
+                <React.Fragment>
+                    <Product></Product>
+                </React.Fragment>
+            )}
             <div className={styles.homeWelcome}>
                 <Grid container>
                     <Grid item md={12}>

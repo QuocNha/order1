@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Fredericka+the+Great&display=swap');
+
+#containerProduct{
+    font-family: 'Dancing Script', cursive;
+    nav {
+        border-bottom: 1px solid rgba(#5DA0AA,0.5);
+        border-top:  1px solid rgba(#5DA0AA,0.5);
+        font-family: 'Source Sans Pro', sans-serif;
+        padding: 0rem;
+        ul{
+            margin: 0;
+            padding: 0;
+            text-align: left;
+            flex: 1;
+            justify-content: space-between;
+            li{
+                list-style:none inside;
+                display: inline;
+                //  float: left;
+                line-height: 35px; /*Cho text canh giữa menu*/ 
+                 margin-right:2rem;
+                a{
+                    font-weight: 500;
+                    font-size: 22px;
+                    text-transform: uppercase;
+                    text-decoration: none;
+                    padding: 1.5rem 0.5rem ;
+                    transition: 0.25s ease all;
+                    cursor: pointer;
+                    flex-direction: none;
+                }
+                & :hover{
+                    color:  #f27257;
+                    font-size: 25px;
+                }
+
+            }
+        }
+       
+    }
+    .Product{
+        padding: 1rem;
+        .add{
+            font-family: "Fredericka the Great";
+            border: 1px dotted #f27257;
+            border-radius: 0.25rem;
+            transition: 0.25s ease all;   
+            cursor: pointer; 
+            position: relative;
+            z-index: 1;
+            &:hover{
+                background-color: #f27257;
+                color: white;
+            }
+        }
+        .productName{
+            color:  rgba(#5DA0AA,0.5);
+        }
+    }
+}
