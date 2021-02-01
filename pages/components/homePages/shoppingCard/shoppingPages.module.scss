@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Fredericka+the+Great&display=swap');
+
+.shopping{
+    text-align: center;
+    padding: 1rem;
+    font-size: 20px;
+    font-family: 'Dancing Script', cursive;
+    .add{
+        font-family: "Fredericka the Great";
+        border: 1px dotted #f27257;
+        border-radius: 0.25rem;
+        transition: 0.25s ease all;   
+        cursor: pointer; 
+        position: relative;
+       
+        &:hover{
+            background-color: #f27257;
+            color: white;
+        }
+    }
+    .buttonBuy{
+        
+    }
+}

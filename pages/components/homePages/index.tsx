@@ -11,11 +11,32 @@ import Link from 'next/link';
 import Carousel from 'react-material-ui-carousel';
 import Image from 'next/image'
 import Product from '../homePages/product';
+import ShoppingCard from './shoppingCard';
 
 const HomPages = () =>{
     const [chanepages,setChanePages]= useState<number>(1);
+    const [openShoppingCard,setOpenShoppingCard] = useState<Boolean>(false);
    const  handelChanceProduct= () =>{
        setChanePages(2);
+   }
+   const handleClose = () =>{
+    setOpenShoppingCard(false);
+   }
+   const handelChanePage = async (pages:number)=>{
+    setChanePages(pages)
+   }
+   const handelModalShopping = async() =>{
+      setChanePages(3);
+      //Điều hướng trang web
+      let el = document.querySelector("#shopping");
+      if  (el!==null){
+        el.scrollIntoView({
+            behavior: 'auto',
+            block: 'center',
+            inline: 'center'
+        });
+      }
+     
    }
     const Item=(props)=>
 {
@@ -96,7 +117,7 @@ const HomPages = () =>{
                                 </IconButton> 
                                  <IconButton aria-label="show 4 new mails" color="inherit">
                                             <Badge badgeContent={4} color="secondary">
-                                                <ShoppingCartIcon  className={styles.user}/>
+                                                <ShoppingCartIcon onClick={handelModalShopping}  className={styles.user}/>
                                             </Badge>
                                 </IconButton> 
                                                       
@@ -195,6 +216,15 @@ const HomPages = () =>{
             {chanepages==2 && (
                 <React.Fragment>
                     <Product></Product>
+                </React.Fragment>
+            )}
+            {chanepages==3 && (
+                <React.Fragment>
+                    <ShoppingCard
+                        openShoppingCard={openShoppingCard}
+                        handleClose={handleClose}
+                        handelChanePage={handelChanePage}
+                    ></ShoppingCard>
                 </React.Fragment>
             )}
             <div className={styles.homeWelcome}>

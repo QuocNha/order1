@@ -70,6 +70,7 @@
             }
             .user{
                 font-size: 40px;
+                cursor: pointer;
                 // background-color: blue;
                 color: #f27257 ;
                 & :hover {
@@ -255,6 +256,7 @@ h1{
 .homeNew{
     padding-top:20px;
     padding-bottom: 200px;
+    cursor: pointer;
     position: relative;
     h2{
         font-family: "Fredericka the Great";

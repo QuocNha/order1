@@ -31,8 +31,9 @@ const Product = () =>{
                                     <Grid item md={6}>
                                     <div className={styles.title}>
                                             <h3 className={styles.productName}>name Product</h3>
-                                            <h3>Giá tiền : <span>12000 Đ</span></h3>
-                                            <h3>Số lượng : <span><AddIcon className={styles.add}></AddIcon></span>  0  <span><RemoveIcon className={styles.add}></RemoveIcon></span></h3>
+                                            <h3>Price : <span>12000 Đ</span></h3>
+                                            <h3>Size : M</h3>
+                                            <h3>Number : <span><AddIcon className={styles.add}></AddIcon></span>  0  <span><RemoveIcon className={styles.add}></RemoveIcon></span></h3>
                                         </div>
                                     </Grid> 
                                     </div>
