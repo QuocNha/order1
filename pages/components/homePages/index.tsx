@@ -203,14 +203,14 @@ const HomPages = () => {
             <React.Fragment>
                 <div className={styles.homeCallToAction}>
                     <Grid container>
-                        <Grid item md={3}>
+                        <Grid item xs ={12} sm={6} md={3} lg={3} >
                             <div className={styles.callToAction}>
                                 <div className={styles.img}>
                                 </div>
                                 <div className={styles.title}>Drink Menu</div>
                             </div>
                         </Grid>
-                        <Grid item md={3}>
+                        <Grid item xs ={12} sm={6} md={3} lg={3} >
                             <div className={styles.callToAction}>
                                 <div className={styles.img}>
 
@@ -219,7 +219,7 @@ const HomPages = () => {
 
                             </div>
                         </Grid>
-                        <Grid item md={3}>
+                        <Grid item xs ={12} sm={6} md={3} lg={3} >
                             <div className={styles.callToAction}>
                                 <div className={styles.img}>
 
@@ -228,7 +228,7 @@ const HomPages = () => {
                             </div>
 
                         </Grid>
-                        <Grid item md={3}>
+                        <Grid item  xs ={12} sm={6} md={3} lg={3} >
                             <div className={styles.callToAction}>
                                 <div className={styles.img}>
 
@@ -242,7 +242,7 @@ const HomPages = () => {
                 <div className={styles.homeNew}>
                     <div className="backGround"></div>
                     <Grid container>
-                        <Grid item md={3}>
+                        <Grid item  sm={6} md={3} lg={4}>
                             <div className={styles.callToAction}>
                                 <div className={styles.img}>
                                 </div>
@@ -250,8 +250,8 @@ const HomPages = () => {
                                 <div className={styles.category}>Drink Menu</div>
                             </div>
                         </Grid>
-                        <Grid item md={3}></Grid>
-                        <Grid item md={6}>
+                        <Grid item lg={2} md={3}></Grid>
+                        <Grid item  xs ={12} md={6} lg={6}>
                             <h2>Mon day</h2>
                             <div className={styles.container}>
                                 <div id={styles.slider}>

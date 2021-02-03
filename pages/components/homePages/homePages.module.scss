@@ -7,6 +7,8 @@
 
 
 .wrapperNavBar{
+    position: relative;
+    z-index: 2000;
     .menuBar{
         position: fixed;
         width: 100%;
@@ -276,17 +278,64 @@
     line-height: 1.25;
     padding-bottom: 115px;
     flex-direction: column;
-    //them hieu ung cho bacgrou
-    & ::after{
-        z-index: 2000;
+    display: flex;    //them hieu ung cho bacgrou
+    position: relative;
+    @media (max-width:920px) {
+        background-position:bottom center;
+    }
+    @media (max-width:768px) {
+        
+    }
+    @media (max-width:568px) {
+        
+    }
+    & ::before{
+        
         content: "";
         display: block;
         height: 230px;
         background: linear-gradient(to top,rgba(white,0),rgba(white,1));
         position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        @media (max-width:920px) {
+            height:  200px;
+           
+        }
+        @media (max-width:768px) {
+            font-size: 150px;
+            
+        }
+        @media (max-width:568px) {
+            font-size: 125px;
+            
+        }
+
+    }
+    & ::after{
+        
+        content: "";
+        display: block;
+        height: 230px;
+        background: linear-gradient(to bottom,rgba(white,0),rgba(white,1));
+        position: absolute;
         bottom: 0;
         left: 0;
         right: 0;
+        @media (max-width:920px) {
+            height:  200px;
+           
+        }
+        @media (max-width:768px) {
+            font-size: 150px;
+            
+        }
+        @media (max-width:568px) {
+            font-size: 125px;
+            
+        }
+
     }
 justify-content: flex-end;
  .homeBananer1{
@@ -302,6 +351,14 @@ h1{
         font-size: 50px;
         margin-top: 100px;
     }
+    @media (max-width:768px) {
+        font-size: 48px;
+        
+    }
+    @media (max-width:568px) {
+        font-size: 36px;
+        
+    }
 }
 @media (max-width:920px) {
     height: 580px;
@@ -309,7 +366,9 @@ h1{
 }
 .homeCallToAction{
     padding: 1rem;
-    
+    @media (max-width:568px) {
+        text-align: center;
+    }  
     .callToAction{
         border-radius: 100%;
          font-size: 100px;
@@ -317,7 +376,25 @@ h1{
         padding-bottom: 100%;
         //chen2\ hai  khoi lai voi nhau
         position: relative;
+        display: block;
         margin-left: 1rem;
+        @media (max-width:920px) {
+            width: 75%;
+            padding-bottom: 75%;
+            margin-bottom: 1rem;
+        }
+        @media (max-width:720px) {
+            width: 75%;
+            padding-bottom: 75%;
+            margin-bottom: 1rem;
+        }
+        @media (max-width:568px) {
+            width: 66%;
+            padding-bottom: 66%;
+            // canh giua mang hinh mobile
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
         .img{
             border-radius: 50%;
             
@@ -330,7 +407,20 @@ h1{
             position: absolute;
             transition: ease 0.25s all; 
             // dieu chinh do dam nhat
-            opacity: 0.85;    
+            opacity: 0.85;
+            @media (max-width:1140px) {
+                top: 20px;
+                left:20px;
+                right: 20px;
+                bottom:20px ;
+            }
+            @media (max-width:1440px) {
+                top: 20px;
+                left:20px;
+                right: 20px;
+                bottom:20px ;
+            }
+               
         }
         &:hover{
             .title{
@@ -361,7 +451,36 @@ h1{
             border-radius: 0.25rem;
             transition: ease 0.25s all; 
             font-family: 'Fredericka the Great', cursive;
+            @media (max-width:1440px) {
+                top: initial;
+                bottom:10%;
+                right: -15px;
+                left: 10%;
+                
+            }
+            @media (max-width:920px) {
+                top: initial;
+                left:50px;
+                right: 20px;
+                bottom:10%;
+                font-size: 15px;
+            }
+            @media (max-width:768px) {
+                top: initial;
+                left:50px;
+                right: 20px;
+                bottom:10%;
+                font-size: 15px;
+            }
+            @media (max-width:568px) {
+                top: initial;
+                left:50%;
+                right: -15px;
+                bottom:45px;
+                font-size: 12px;
+            }
         }
+
 
     }
     
