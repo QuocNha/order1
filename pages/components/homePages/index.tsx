@@ -14,6 +14,7 @@ import Carousel from 'react-material-ui-carousel';
 import Image from 'next/image'
 import Product from '../homePages/product';
 import ShoppingCard from './shoppingCard';
+import SignUp from './signUp';
 
 const HomPages = () => {
     const [chanepages, setChanePages] = useState<number>(1);
@@ -242,16 +243,20 @@ const HomPages = () => {
                 <div className={styles.homeNew}>
                     <div className="backGround"></div>
                     <Grid container>
-                        <Grid item  sm={6} md={3} lg={4}>
+                        <Grid item   lg={4} md={4} sm={12} xs={12}>
                             <div className={styles.callToAction}>
                                 <div className={styles.img}>
                                 </div>
                                 <div className={styles.date}>Sun 13 May <NavigateNextIcon className={styles.nextDay}></NavigateNextIcon></div>
                                 <div className={styles.category}>Drink Menu</div>
                             </div>
+                            <div className={styles.callToActionAfter}>
+                                 <div className={styles.dateAfter}>Sun 13 May </div>
+                                <div className={styles.categoryAfter}>Drink Menu</div>   
+                            </div>
                         </Grid>
-                        <Grid item lg={2} md={3}></Grid>
-                        <Grid item  xs ={12} md={6} lg={6}>
+                        <Grid item lg={2} md={2} ></Grid>
+                        <Grid item  lg={6} md={6} sm={12} xs={12}>
                             <h2>Mon day</h2>
                             <div className={styles.container}>
                                 <div id={styles.slider}>
@@ -281,6 +286,11 @@ const HomPages = () => {
                 ></ShoppingCard>
             </React.Fragment>
         )}
+        {/* Trang SignUp */}
+        <React.Fragment>
+            <SignUp></SignUp>
+        </React.Fragment>
+        
         <div className={styles.homeWelcome}>
             <Grid container>
                 <Grid item md={12}>

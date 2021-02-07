@@ -395,6 +395,7 @@ h1{
             display: inline-block;
             margin-bottom: 1rem;
         }
+
         .img{
             border-radius: 50%;
             
@@ -535,12 +536,28 @@ h1{
     padding-bottom: 200px;
     cursor: pointer;
     position: relative;
+    
     h2{
         font-family: "Fredericka the Great";
         cursor: pointer;
+        padding: 1rem;
         font-size: 40px;
+        margin-left: 1rem;
         margin-bottom: 0.5rem;
-         color: #f27257;   
+         color: #f27257;
+         transition: ease  0.25s all ;
+         @media (max-width:1140px) {
+             font-size: 37px;
+         }
+         @media (max-width:920x) {
+            font-size: 34px;
+        }   
+        @media (max-width:768px) {
+            font-size: 31px;
+        }   
+        @media (max-width:576px) {
+            font-size: 28px;
+        }      
     }
     .container{
         line-height: 2;
@@ -557,6 +574,24 @@ h1{
         color: white;
         border: 1px dashed white;
         right: -15px;
+        @media (max-width:1440px) {
+          
+           
+           
+            
+        }
+        @media (max-width:920px) {
+           
+            font-size: 15px;
+        }
+        @media (max-width:768px) {
+           
+            font-size: 15px;
+        }
+        @media (max-width:568px) {
+           
+            font-size: 12px;
+        }
     }
     .callToAction{
         border-radius: 100%;
@@ -565,6 +600,16 @@ h1{
         padding-bottom: 90%;
         //chen2\ hai  khoi lai voi nhau
         position: relative;
+        @media (max-width :920px) {
+            display: none;
+        }
+        @media (max-width :1140px) {
+            margin-bottom: 1rem;
+        }
+        @media (max-width :1440px) {
+            width: 100%;
+            margin-bottom: 1rem;
+        }
         .img{
             border-radius: 50%;    
             background-image:url(../../../public/images.jpg) ;
@@ -576,7 +621,24 @@ h1{
             position: absolute;
             transition: ease 0.25s all; 
             // dieu chinh do dam nhat
-            opacity: 0.85;    
+            opacity: 0.85;
+        @media (max-width:920px) {
+            width: 75%;
+            padding-bottom: 75%;
+            margin-bottom: 1rem;
+        }
+        @media (max-width:720px) {
+            width: 75%;
+            padding-bottom: 75%;
+            margin-bottom: 1rem;
+        }
+        @media (max-width:568px) {
+            width: 66%;
+            padding-bottom: 66%;
+            // canh giua mang hinh mobile
+            display: inline-block;
+            margin-bottom: 1rem;
+        }    
         }
         &:hover{
             .category{
@@ -589,7 +651,19 @@ h1{
                 left: 5px;
                 right: 5px;
                 bottom: 5px;
-                opacity:1;  
+                opacity:1;
+                @media (max-width:1140px) {
+                    top: 20px;
+                    left:20px;
+                    right: 20px;
+                    bottom:20px ;
+                }
+                @media (max-width:1440px) {
+                    top: 20px;
+                    left:20px;
+                    right: 20px;
+                    bottom:20px ;
+                }  
             }
         }
         .category{
@@ -608,7 +682,57 @@ h1{
             transition: ease 0.25s all; 
             font-family: 'Fredericka the Great', cursive;
         }
+        
 
+    }
+    .callToActionAfter{
+        
+        cursor: pointer;
+        position: relative;
+       
+        .dateAfter{
+            font-size: 20px;
+            position: absolute;
+            //ket hop voi transition lam thuoc tinh hover
+            right: 25%;
+            background: #5DA0AA;
+            padding: 0.5rem 1rem;
+            background: #5DA0AA;
+            border: 1px dashed white;
+            border-radius: 0.25rem;
+            transition: ease 0.25s all; 
+            font-family: 'Fredericka the Great', cursive;
+            @media (max-width:768px) {
+                right: 20%;
+                font-size: 18px;
+            }
+        }
+        .categoryAfter{
+            font-size: 20px;
+            position: absolute;
+            left: 25%;
+            //ket hop voi transition lam thuoc tinh hover
+            
+            background: #5DA0AA;
+            padding: 0.5rem 1rem;
+            background: #f27257;
+            border: 1px dashed white;
+            border-radius: 0.25rem;
+            transition: ease 0.25s all; 
+            font-family: 'Fredericka the Great', cursive;
+            @media (max-width:768px) {
+                left: 20%;
+                font-size: 18px;
+            }
+        }
+        @media (max-width:1440px) {
+            display: none;
+        }
+        @media (max-width:920px) {
+            display: flex;
+        }
+        @media (max-width:768px) {
+        }
     }
 
     //lam slider
